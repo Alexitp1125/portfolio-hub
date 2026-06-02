@@ -1,0 +1,52 @@
+﻿@page "/"
+
+@rendermode InteractiveServer
+
+<PageTitle>Alexi Torres — Under Construction</PageTitle>
+
+<div class="uc-wrap">
+    <div class="uc-term">
+        <div class="uc-bar">
+            <span class="uc-dot uc-red"></span>
+            <span class="uc-dot uc-amber"></span>
+            <span class="uc-dot uc-green"></span>
+        </div>
+        <div class="uc-body">
+            <div class="uc-line">
+                <span class="uc-prompt">$</span>
+                <span class="uc-cmd">@_typed</span><span class="uc-cursor"></span>
+            </div>
+            @if (_showOutput)
+            {
+                <div class="uc-out">
+                    <div class="uc-name">Alexi Torres</div>
+                    <div class="uc-sub">Full Stack .NET Developer</div>
+                    <div class="uc-status">Status: under construction</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private const string Command = "whoami --status";
+    private string _typed = "";
+    private bool _showOutput = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+
+        await Task.Delay(500);
+        for (int i = 1; i <= Command.Length; i++)
+        {
+            _typed = Command.Substring(0, i);
+            StateHasChanged();
+            await Task.Delay(90);
+        }
+
+        await Task.Delay(350);
+        _showOutput = true;
+        StateHasChanged();
+    }
+}
