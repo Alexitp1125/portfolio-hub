@@ -1,0 +1,37 @@
+@page "/"
+@inject IStringLocalizer<SharedResource> L
+
+@* Home page = app catalog. Project data is hardcoded in memory until the hub
+   database exists. One real entry for now; more get added as they ship. *@
+
+<PageTitle>@L["Catalog.Title"] · alexitp1125</PageTitle>
+
+<section class="ph-page">
+    <h1 class="ph-catalog-title">@L["Catalog.Title"]</h1>
+
+    <div class="ph-grid">
+        <ProjectCard Project="_donut">
+            <Media>
+                <div class="donut-art" aria-hidden="true">
+                    <div class="donut-stage">
+                        <div class="donut-ring"></div>
+                        <div class="donut-core"></div>
+                    </div>
+                </div>
+            </Media>
+        </ProjectCard>
+    </div>
+</section>
+
+@code {
+    // First project: a 3D donut chart generator (currently a JS prototype, to be
+    // rebuilt in C#/Blazor with TypeScript interop where C# can't reach). Not
+    // deployed yet -> Coming soon, no links.
+    private Project _donut => new()
+    {
+        Title = L["Project.Donut.Title"],
+        Tagline = L["Project.Donut.Tagline"],
+        Tags = ["Blazor", "C#", "TypeScript"],
+        Status = ProjectStatus.Soon
+    };
+}

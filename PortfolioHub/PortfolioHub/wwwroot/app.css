@@ -2,8 +2,69 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* =========================================================
+   Portfolio Hub — tema oscuro + acento vaporwave (azul→rosa)
+   Paleta como variables CSS reutilizables (no hardcodear por
+   componente). Ver PROJECT_INSTRUCTIONS.md §7.2.
+   ========================================================= */
+/* Accent gradient — same in both themes */
+:root {
+    --ph-accent-1: #38bdf8; /* blue   */
+    --ph-accent-2: #818cf8; /* indigo */
+    --ph-accent-3: #f472b6; /* pink   */
+    --ph-accent: linear-gradient(90deg, var(--ph-accent-1), var(--ph-accent-2), var(--ph-accent-3));
+}
+
+/* Dark theme palette (default) */
+[data-bs-theme="dark"] {
+    --ph-bg: #0f1021;
+    --ph-surface: #181a2e;
+    --ph-border: #272a45;
+    --ph-text: #eef0fb;
+    --ph-text-muted: #9498b3;
+    --ph-nav-bg: rgba(15, 16, 33, 0.82);
+
+    --bs-body-bg: var(--ph-bg);
+    --bs-body-color: var(--ph-text);
+    --bs-border-color: var(--ph-border);
+    --bs-emphasis-color: var(--ph-text);
+    --bs-secondary-color: var(--ph-text-muted);
+}
+
+/* Light theme palette */
+[data-bs-theme="light"] {
+    --ph-bg: #f6f7fb;
+    --ph-surface: #ffffff;
+    --ph-border: #e3e6ef;
+    --ph-text: #1a1c2b;
+    --ph-text-muted: #5b6076;
+    --ph-nav-bg: rgba(246, 247, 251, 0.85);
+
+    --bs-body-bg: var(--ph-bg);
+    --bs-body-color: var(--ph-text);
+    --bs-border-color: var(--ph-border);
+    --bs-emphasis-color: var(--ph-text);
+    --bs-secondary-color: var(--ph-text-muted);
+}
+
+body {
+    background-color: var(--ph-bg);
+    color: var(--ph-text);
+}
+
 a, .btn-link {
-    color: #006bb7;
+    color: var(--ph-accent-2);
+}
+
+/* Utilidades de página reutilizables */
+.ph-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.ph-muted {
+    color: var(--ph-text-muted);
 }
 
 .btn-primary {

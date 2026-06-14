@@ -1,0 +1,24 @@
+@using System.Globalization
+@inject NavigationManager Nav
+
+@* EN/ES switch rendered as a segmented "pill". Each option links to the
+   /culture/set endpoint, which stores the chosen culture in a cookie and
+   redirects back. data-enhance-nav="false" forces a full reload so the new
+   culture is applied server-side. *@
+
+@{
+    var current = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    var returnUrl = "/" + Nav.ToBaseRelativePath(Nav.Uri);
+}
+
+<div class="lang" role="group" aria-label="Language">
+    <a class="opt @(current == "en" ? "is-active" : "")"
+       href="@CultureUrl("en", returnUrl)" data-enhance-nav="false">EN</a>
+    <a class="opt @(current == "es" ? "is-active" : "")"
+       href="@CultureUrl("es", returnUrl)" data-enhance-nav="false">ES</a>
+</div>
+
+@code {
+    private static string CultureUrl(string culture, string returnUrl)
+        => $"culture/set?culture={culture}&redirectUri={Uri.EscapeDataString(returnUrl)}";
+}

@@ -1,0 +1,79 @@
+.ph-catalog-title {
+    margin: 0 0 1.75rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ph-text);
+}
+
+/* Responsive grid: cards keep a sensible width and fill the row left-to-right
+   as more projects are added (a single card stays its natural size, not stretched). */
+.ph-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 340px));
+    justify-content: start;
+    gap: 1.5rem;
+}
+
+/* ============================================================
+   CSS art for the first project — a 3D donut chart, using the
+   site accent (blue -> indigo -> pink). No raster image.
+   ============================================================ */
+.donut-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(120% 90% at 50% 18%, #1b1e3d 0%, var(--ph-bg) 70%);
+    overflow: hidden;
+}
+
+.donut-stage {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    perspective: 620px;
+}
+
+.donut-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 210deg,
+        var(--ph-accent-1),
+        var(--ph-accent-2),
+        var(--ph-accent-3),
+        var(--ph-accent-2),
+        var(--ph-accent-1));
+    -webkit-mask: radial-gradient(circle at 50% 50%, transparent 41%, #000 42%);
+    mask: radial-gradient(circle at 50% 50%, transparent 41%, #000 42%);
+    transform: rotateX(64deg) rotate(0deg);
+    box-shadow: 0 22px 34px rgba(0, 0, 0, 0.5);
+    animation: donut-spin 16s linear infinite;
+}
+
+/* Faint inner highlight so the hole reads as a 3D core. */
+.donut-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotateX(64deg);
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.22), transparent 70%);
+}
+
+@keyframes donut-spin {
+    to {
+        transform: rotateX(64deg) rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .donut-ring {
+        animation: none;
+    }
+}

@@ -1,0 +1,41 @@
+@inject IStringLocalizer<SharedResource> L
+
+@* Persistent top navigation. Lives on every page via MainLayout.
+   Classes are prefixed "ph-" to avoid clashing with Bootstrap (e.g. .nav).
+   The checkbox + label is a CSS-only hamburger for small screens.
+   The right cluster is: links | GitHub · language pill · theme toggle. *@
+
+<header class="ph-nav">
+    <div class="ph-nav-inner">
+        <a class="ph-brand" href="/">
+            <span class="ph-brand-mark" aria-hidden="true"></span>
+            <span class="ph-brand-name">alexitp1125</span>
+        </a>
+
+        <input type="checkbox" id="ph-nav-toggle" class="ph-nav-cb" autocomplete="off" aria-label="Menu" />
+        <label for="ph-nav-toggle" class="ph-hamburger">
+            <i class="bi bi-list" aria-hidden="true"></i>
+        </label>
+
+        <div class="ph-cluster">
+            <nav class="ph-nav-links">
+                <NavLink class="ph-link" href="" Match="NavLinkMatch.All">@L["Nav.Projects"]</NavLink>
+                <NavLink class="ph-link" href="about">@L["Nav.About"]</NavLink>
+                <NavLink class="ph-link" href="contact">@L["Nav.Contact"]</NavLink>
+            </nav>
+
+            <span class="ph-divider" aria-hidden="true"></span>
+
+            <div class="ph-controls">
+                <a class="ph-icon-btn" href="https://github.com/Alexitp1125"
+                   target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                </a>
+                <LanguageSwitch />
+                <button type="button" class="ph-icon-btn" data-theme-toggle aria-label="Toggle theme">
+                    <i class="bi bi-circle-half" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>

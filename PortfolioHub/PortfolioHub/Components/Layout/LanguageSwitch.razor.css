@@ -1,0 +1,28 @@
+/* Segmented "pill": two options inside a rounded, bordered track. */
+.lang {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--ph-border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.opt {
+    color: var(--ph-text-muted);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.18rem 0.62rem;
+    line-height: 1.2;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.opt:hover {
+    color: var(--ph-text);
+}
+
+.opt.is-active {
+    color: var(--ph-text);
+    background: var(--ph-surface);
+}

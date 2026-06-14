@@ -1,0 +1,89 @@
+@inject IStringLocalizer<SharedResource> L
+
+@* One catalog entry. The media area shows, in priority order: a Media render
+   fragment (e.g. CSS art), then Project.ImageUrl, then a compact text-only
+   layout. Classes are prefixed "ph-" to avoid clashing with Bootstrap. *@
+
+<article class="ph-card">
+    @if (HasMedia)
+    {
+        <div class="ph-card-media">
+            @if (Media is not null)
+            {
+                @Media
+            }
+            else
+            {
+                <img src="@Project.ImageUrl" alt="@Project.Title" loading="lazy" />
+            }
+            <span class="ph-badge @StatusClass">@StatusLabel</span>
+        </div>
+    }
+
+    <div class="ph-card-body">
+        @if (!HasMedia)
+        {
+            <div class="ph-card-top">
+                <span class="ph-card-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                <span class="ph-badge @StatusClass">@StatusLabel</span>
+            </div>
+        }
+
+        <h3 class="ph-card-title">@Project.Title</h3>
+        <p class="ph-card-tagline">@Project.Tagline</p>
+
+        @if (Project.Tags.Length > 0)
+        {
+            <div class="ph-card-tags">
+                @foreach (var tag in Project.Tags)
+                {
+                    <span class="ph-tag">@tag</span>
+                }
+            </div>
+        }
+
+        @if (HasLinks)
+        {
+            <div class="ph-card-links">
+                @if (!string.IsNullOrEmpty(Project.DemoUrl))
+                {
+                    <a class="ph-card-link" href="@Project.DemoUrl" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> @L["Card.Demo"]
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(Project.GitHubUrl))
+                {
+                    <a class="ph-card-link" href="@Project.GitHubUrl" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github" aria-hidden="true"></i> GitHub
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(Project.DetailUrl))
+                {
+                    <a class="ph-card-more" href="@Project.DetailUrl">
+                        @L["Card.More"] <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                }
+            </div>
+        }
+    </div>
+</article>
+
+@code {
+    [Parameter, EditorRequired]
+    public Project Project { get; set; } = default!;
+
+    /// <summary>Optional custom media (e.g. CSS art) rendered in the image area.</summary>
+    [Parameter]
+    public RenderFragment? Media { get; set; }
+
+    private bool HasMedia => Media is not null || !string.IsNullOrEmpty(Project.ImageUrl);
+
+    private bool HasLinks =>
+        !string.IsNullOrEmpty(Project.DemoUrl)
+        || !string.IsNullOrEmpty(Project.GitHubUrl)
+        || !string.IsNullOrEmpty(Project.DetailUrl);
+
+    private string StatusLabel => Project.Status == ProjectStatus.Live ? L["Status.Live"] : L["Status.Soon"];
+
+    private string StatusClass => Project.Status == ProjectStatus.Live ? "ph-badge--live" : "ph-badge--soon";
+}

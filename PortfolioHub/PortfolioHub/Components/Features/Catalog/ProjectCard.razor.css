@@ -1,0 +1,150 @@
+/* All classes prefixed "ph-" to avoid clashing with Bootstrap. */
+
+.ph-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--ph-surface);
+    border: 1px solid var(--ph-border);
+    border-radius: 14px;
+    overflow: hidden;
+    height: 100%;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.ph-card:hover {
+    border-color: var(--ph-accent-2);
+    transform: translateY(-2px);
+}
+
+/* ---- Media (optional screenshot) ---- */
+.ph-card-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--ph-bg);
+}
+
+.ph-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ph-card-media .ph-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* ---- Body ---- */
+.ph-card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1.05rem 1.15rem 1.15rem;
+    flex: 1 1 auto;
+}
+
+.ph-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+}
+
+.ph-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--ph-bg);
+    color: var(--ph-accent-2);
+    font-size: 1.05rem;
+}
+
+.ph-card-title {
+    margin: 0 0 0.35rem;
+    color: var(--ph-text);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.ph-card-tagline {
+    margin: 0 0 0.85rem;
+    color: var(--ph-text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+/* ---- Tags ---- */
+.ph-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.ph-tag {
+    font-size: 0.72rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 6px;
+    background: var(--ph-bg);
+    border: 1px solid var(--ph-border);
+    color: var(--ph-text-muted);
+}
+
+/* ---- Badge (live / soon) ---- */
+.ph-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.16rem 0.55rem;
+    border-radius: 999px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.ph-badge--live {
+    background: var(--ph-accent);
+    color: #0f1021;
+}
+
+.ph-badge--soon {
+    background: transparent;
+    border: 1px solid var(--ph-border);
+    color: var(--ph-text-muted);
+}
+
+/* ---- Links ---- */
+.ph-card-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--ph-border);
+}
+
+.ph-card-link {
+    color: var(--ph-text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.15s ease;
+}
+
+.ph-card-link:hover {
+    color: var(--ph-text);
+}
+
+.ph-card-more {
+    margin-left: auto;
+    color: var(--ph-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.ph-card-more:hover {
+    color: var(--ph-accent-2);
+}

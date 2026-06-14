@@ -1,0 +1,170 @@
+/* All classes prefixed "ph-" to avoid clashing with Bootstrap (notably .nav). */
+
+.ph-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ph-nav-bg);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Gains a subtle border + shadow once the page is scrolled (toggled in site.js). */
+.ph-nav.ph-scrolled {
+    border-bottom-color: var(--ph-border);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+.ph-nav-inner {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Brand */
+.ph-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ph-text);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+}
+
+.ph-brand-mark {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background: var(--ph-accent);
+}
+
+/* Right-hand cluster: links + controls */
+.ph-cluster {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+}
+
+.ph-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+/* NavLink renders its own <a>, so reach it with ::deep */
+.ph-nav-links ::deep a {
+    position: relative;
+    color: var(--ph-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.25rem 0;
+    transition: color 0.15s ease;
+}
+
+.ph-nav-links ::deep a:hover {
+    color: var(--ph-text);
+}
+
+.ph-nav-links ::deep a.active {
+    color: var(--ph-text);
+}
+
+.ph-nav-links ::deep a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ph-accent);
+}
+
+/* Vertical divider between the links and the right-hand controls */
+.ph-divider {
+    width: 1px;
+    height: 18px;
+    background: var(--ph-border);
+}
+
+.ph-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.ph-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0.2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--ph-text-muted);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.ph-icon-btn:hover {
+    color: var(--ph-text);
+}
+
+/* CSS-only hamburger (hidden on desktop) */
+.ph-nav-cb {
+    display: none;
+}
+
+.ph-hamburger {
+    display: none;
+    cursor: pointer;
+    color: var(--ph-text);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0.1rem 0.2rem;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 719.98px) {
+    .ph-hamburger {
+        display: inline-flex;
+    }
+
+    .ph-cluster {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.1rem;
+        padding: 1.1rem 1.25rem 1.35rem;
+        background: var(--ph-surface);
+        border-bottom: 1px solid var(--ph-border);
+    }
+
+    .ph-nav-cb:checked ~ .ph-cluster {
+        display: flex;
+    }
+
+    .ph-nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.85rem;
+    }
+
+    /* Divider is purely decorative between desktop sections — hide when stacked. */
+    .ph-divider {
+        display: none;
+    }
+}
