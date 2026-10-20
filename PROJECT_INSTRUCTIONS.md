@@ -3,7 +3,19 @@
 > Fuente de verdad del proyecto. Se lee al inicio de cada sesión y se actualiza al
 > cierre con lo que realmente se decidió/hizo. Construir primero, documentar después.
 >
-> Propietario: Alexi Torres · Dominio: alexitp1125.com · Última actualización: **2026-06-13**
+> Propietario: Alexi Torres · Dominio: alexitp1125.com · Última actualización: **2026-10-20**
+
+---
+
+## 0. Resumen rápido (leer primero)
+
+- **Dónde estoy:** el hub está en producción en `alexitp1125.com`: catálogo con una
+  tarjeta (3D Donut Chart, *Coming soon*), EN/ES y tema claro/oscuro. El servidor está
+  al día y `server-infra` tiene su propio README.
+- **Lo último (2026-10-20):** se escribió el **Hero** de la página principal.
+  **Sin commit y sin compilar todavía.**
+- **Lo siguiente:** (1) compilar, revisar y desplegar el Hero; (2) sacar las
+  convenciones de Apollo a un `CONVENTIONS.md`. Detalle en §11.
 
 ---
 
@@ -15,47 +27,43 @@ futura vivirá en su propio subdominio, repo y contenedor independiente. El hub 
 muestra el catálogo con enlaces (demo, GitHub, NuGet, descarga). Se crece de forma
 iterativa y honesta: lo que no está desplegado no se marca como "live".
 
+**El hub es una app más.** Su función es listar las demás; no sabe nada de cómo
+funciona cada una por dentro.
+
 ---
 
-## 2. Estado REAL del repo (verificado 2026-06-13)
+## 2. Estado REAL del repo (verificado 2026-10-20)
 
-⚠️ **Importante:** este repo está en la etapa **"under construction"**, NO en la etapa
-de catálogo que describen los PDFs `Manual_Proyecto_Portfolio.pdf` y
-`Guia_Comandos_Portfolio.pdf`. Esos PDFs describen un Dashboard/catálogo que **no
-existe en este repo ni en GitHub** (`origin/main` está en el mismo punto). Se tratan
-como contexto/referencia del plan, no como descripción del código actual.
+**Producción:** `alexitp1125.com` sirve el commit `6fce62d` (2026-06-14), verificado en
+el servidor el 2026-10-14. `www.alexitp1125.com` redirige al dominio principal desde el
+2026-10-19 (configurado en `server-infra`).
 
-Qué hay de verdad hoy:
+Qué hay:
 
-- Solución Blazor Web App **.NET 10, InteractiveAuto**: proyectos `PortfolioHub`
-  (servidor) y `PortfolioHub.Client` (WebAssembly).
-- **Única personalización real:** `Components/Pages/Home.razor` reemplazada por una
-  página *under construction* estilo terminal (`@rendermode InteractiveServer`, con
-  animación de tipeo: campos `_typed` / `_showOutput`).
-- **Restos del scaffold por defecto, todavía presentes:**
-  - `PortfolioHub.Client/Pages/Counter.razor`
-  - `PortfolioHub/Components/Pages/Weather.razor`
-  - `NavMenu.razor` con enlaces Home / Counter / Weather (sidebar de plantilla)
-  - `MainLayout.razor` con el enlace "About" apuntando a learn.microsoft.com
-- `Program.cs` (servidor): estándar del scaffold; registra los dos render modes y
-  `AddAdditionalAssemblies(typeof(PortfolioHub.Client._Imports).Assembly)`.
-- `PortfolioHub.csproj`: incluye `BlazorDisableThrowNavigationException=true`. **Sin**
-  paquetes de EF Core ni Npgsql.
-- Bootstrap **local** en `wwwroot/lib/bootstrap` (referenciado en `App.razor`). Aún
-  **no** se cargan Bootstrap Icons.
-- `Dockerfile` multi-stage presente en la raíz.
+- Solución Blazor Web App **.NET 10, InteractiveAuto**: `PortfolioHub` (servidor) y
+  `PortfolioHub.Client` (WebAssembly).
+- **Layout:** `NavBar` (marca `alexitp1125`, enlaces Projects/About/Contact, GitHub,
+  `LanguageSwitch` EN/ES, botón de tema, hamburguesa CSS en móvil), `MainLayout` de barra
+  superior y `ReconnectModal`.
+- **Catálogo** (`Features/Catalog`): `CatalogPage` en `/`, `ProjectCard` (con modo solo
+  texto y fragmento `Media` para arte CSS) y el modelo `Project` + `ProjectStatus`
+  (`Live`/`Soon`). Datos en memoria. Una tarjeta: 3D Donut Chart (`Soon`, arte CSS).
+- **Hero** en `CatalogPage` (2026-10-20, **pendiente de compilar y desplegar**): línea
+  con nombre y rol, titular con el degradado, frase sobre la arquitectura, botones
+  *View projects* / *GitHub*, y fondo con brillo + cuadrícula vaporwave.
+- Localización EN/ES: `IStringLocalizer<SharedResource>` + `Resources/SharedResource*.resx`
+  + cookie vía `/culture/set`. Inglés por defecto.
+- Tema claro/oscuro con toggle (`js/site.js`, default oscuro).
+- **About y Contact son placeholders** ("Under construction").
+- `Components/Pages/Home.razor` (+ `.css`): la página vieja *under construction*, ahora en
+  `/under-construction`. Ya no se usa: **se borra** (§11).
+- `Dockerfile` multi-stage en la raíz.
 
-Qué **NO** existe todavía (a pesar de lo que digan los PDFs/notas viejas):
-catálogo `Dashboard.razor`, `ProjectCard.razor`, carpeta `Models/`, proyecto de datos
-`PortfolioHub.Data`, localización ES/EN (`.resx`), páginas About/Contact, footer
-propio, SEO (sitemap/robots), base de datos.
+Qué **no** existe todavía: footer, base de datos, SEO, página de detalle por app,
+proyectos de capa (`Data`/`Application`/`Tests`).
 
-**Producción:** los PDFs afirman que `https://alexitp1125.com` está vivo en un Droplet
-de DigitalOcean. El contenido realmente desplegado **no se verificó** en esta sesión.
-Lo que vive en este repo + GitHub es la página *under construction*.
-
-Historial git actual: `initial commit` → `add Blazor scaffold with under-construction
-page` → `add Dockerfile`.
+Los PDFs de junio (`Manual_Proyecto_Portfolio.pdf`, `Guia_Comandos_Portfolio.pdf`) son
+contexto histórico, no el estado actual.
 
 ---
 
@@ -66,9 +74,19 @@ page` → `add Dockerfile`.
 - **No pre-decidir por Alexi.** Si una decisión contradice este doc o los PDFs,
   señalarlo antes de actuar (no asumir).
 - **Construir primero, documentar después.** Al cierre de cada sesión, actualizar la
-  bitácora (§9) con lo que realmente se hizo.
+  bitácora (§10) con lo que realmente se hizo.
 - **Honestidad en el catálogo:** nada se marca "live" si no está desplegado; badges
   "soon" cuando corresponda.
+- **Ritmo de trabajo (acordado 2026-10-20):**
+  1. Idea → tarjeta temporal en el hub (*Coming soon* + una línea de qué es).
+  2. Cada app se desarrolla en su repo, su contenedor y su chat. El hub no se toca.
+  3. Cuando la app tiene forma → se vuelve al hub y se actualiza su tarjeta (estado,
+     enlaces, captura).
+  4. Con 3 apps reales → se trabaja el resto del hub (About, Contact, footer, SEO).
+- **El repo es la fuente de verdad, no el chat.** Al cerrar cada sesión, commit de código
+  y docs juntos. (Se perdió una cuenta de Claude con todo su historial; lo que estaba en
+  el repo sobrevivió.)
+- **Se edita en el PC, nunca en el servidor.** En el servidor solo `git pull`.
 
 ---
 
@@ -109,6 +127,10 @@ page` → `add Dockerfile`.
   trabaje solo).
 - **Tests (cuando exista lógica de dominio):** xUnit + FluentAssertions +
   Moq/NSubstitute; objetivo ~60% en esa capa.
+
+- **Referencia: Apollo.** Las convenciones de Apollo (nomenclatura, ViewModels,
+  proyectos separados por capa) se van a pasar a un `CONVENTIONS.md` (§11). Cuando
+  exista, esta sección se alinea con él.
 
 ---
 
@@ -155,22 +177,21 @@ Prioridad de la página: (1) las apps, (2) los recursos de cada app, (3) la pers
 
 Componentes **persistentes** (en `Layout/`, en todas las páginas):
 
-- `NavBar` — marca **`alexitp1125`** + enlaces localizados (Projects/About/Contact) +
-  `LanguageSwitch` (EN/ES) + botón de tema (claro/oscuro). Responsive: hamburguesa
-  CSS en móvil.
-- `Footer` — GitHub · LinkedIn · email · NuGet (pendiente de construir).
+- `NavBar` — **hecho.** Marca **`alexitp1125`** + enlaces localizados (Projects/About/
+  Contact) + `LanguageSwitch` (EN/ES) + botón de tema. Hamburguesa CSS en móvil.
+- `Footer` — GitHub · LinkedIn · email · NuGet. **Pendiente** (cuando haya 3 apps).
 
 **Página principal = hub** (`Features/Catalog/`), de arriba abajo:
 
-- `Hero` — titular con gancho + botón "Ver proyectos".
-- `ProjectGrid` — rejilla de `ProjectCard` (1 por app: miniatura, título, frase, tags,
-  badge live/soon, "ver más").
-- `AboutTeaser` — bloque breve "sobre mí" que enlaza a `AboutPage`.
+- `Hero` — **hecho 2026-10-20** (dentro de `CatalogPage`): titular con el degradado,
+  frase y botones *View projects* / *GitHub*.
+- `ProjectGrid` — **hecho** (dentro de `CatalogPage`): rejilla de `ProjectCard`.
+- `AboutTeaser` — **pendiente**, cuando exista `AboutPage`.
 
 **Por app:** `ProjectDetailPage` en ruta `/apps/{slug}` — info larga, capturas, stack y
-todos los recursos (demo, GitHub, NuGet, descarga).
+todos los recursos (demo, GitHub, NuGet, descarga). **Pendiente.**
 
-**Páginas sueltas:** `AboutPage`, `ContactPage`.
+**Páginas sueltas:** `AboutPage`, `ContactPage` (hoy placeholders).
 
 ### 7.2 Dirección visual (confirmada 2026-06-13)
 
@@ -192,33 +213,36 @@ hardcodeada por componente — ver convención §5):
 - Texto `#eef0fb` · texto tenue `#9498b3`
 - Acento (degradado) `#38bdf8 → #818cf8 → #f472b6`
 
+Desde el 2026-10-20, el sitio principal del acento es el **titular del Hero**.
+
 ---
 
-## 8. Infraestructura (datos de referencia, según los PDFs)
+## 8. Infraestructura (datos de referencia)
 
 | Qué | Valor |
 |---|---|
 | Dominio | alexitp1125.com (Cloudflare Registrar) |
 | IP servidor | 162.243.22.179 |
-| Usuario servidor | alexitp (no-root, sudo + llave SSH) |
+| Usuario servidor | alexitp (no-root, sudo + llave SSH) · desde el PC: `ssh hub` |
 | SO | Ubuntu 24.04 LTS · 2 GB RAM · NYC2 |
 | DNS | Cloudflare: A (@) + wildcard (*) → 162.243.22.179, "DNS only" |
 | Repos | portfolio-hub (público, MIT) · server-infra (privado) |
 | Ruta servidor | `~/server-infra` (Caddyfile + compose) · `~/projects/portfolio-hub` (código) |
-| Ruta PC | `D:\Dev\portfolio-hub` · `D:\Dev\server-infra` |
+| Ruta PC | `C:\dev\portfolio-hub` · `C:\dev\server-infra` |
 | Git identity | Alexi Torres · alexitp1125@gmail.com |
+
+Todo lo de infraestructura (desplegar, añadir una app nueva, cuidados) está en el
+**README de `server-infra`**.
 
 ---
 
 ## 9. Flujo de despliegue (referencia rápida)
 
-1. **PC:** `git add .` → `git commit -m "feat: ..."` → `git push`
-2. **Servidor:** `ssh alexitp@162.243.22.179` → `cd ~/projects/portfolio-hub && git pull`
-   → `cd ~/server-infra && docker compose up -d --build`
-3. **Navegador:** recargar `https://alexitp1125.com` con Ctrl+F5
-
-Probar en local antes de subir: `dotnet build` y `dotnet run` dentro de
-`D:\Dev\portfolio-hub`. (El SDK/NuGet corre en tu PC, no en este entorno.)
+1. **PC, probar en local:** `cd C:\dev\portfolio-hub` → `dotnet run --project PortfolioHub\PortfolioHub`
+2. **PC, subir:** `git add .` → `git commit -m "feat: ..."` → `git push`
+3. **Servidor:** `ssh hub` → `cd ~/projects/portfolio-hub && git pull`
+   → `cd ~/server-infra && docker compose up -d --build hub`
+4. **Navegador:** recargar `https://alexitp1125.com` con Ctrl+F5
 
 ---
 
@@ -261,23 +285,36 @@ Probar en local antes de subir: `dotnet build` y `dotnet run` dentro de
     Pendiente: Alexi corre `dotnet build`/`run`, revisa, y luego commit + deploy
     (objetivo antes del lunes).
 
+- **2026-10-14** — La PC que tenía la llave SSH se rompió. Acceso recuperado: llave
+  ed25519 nueva (`id_ed25519_hub`) autorizada desde la consola de DigitalOcean (reset de
+  root), alias `ssh hub`, llave vieja eliminada. Servidor actualizado (`apt upgrade`,
+  Docker al día). Verificado: el servidor estaba en `6fce62d`, igual que GitHub; no se
+  perdió nada.
+- **2026-10-19** — PC nueva: Git, Visual Studio 2026 (workload ASP.NET), repos clonados en
+  `C:\dev`. En `server-infra`: redirección `www`, cabeceras de seguridad y compresión
+  compartidas, límite de logs de Docker, HTTP/3 y README. Verificado: SSH no acepta
+  contraseñas y las actualizaciones de seguridad son automáticas. Pendiente: cerrar el
+  login de root por SSH (anotado en el README de `server-infra`).
+- **2026-10-20** — Repaso del hub. Acordado el ritmo de trabajo (§3) y que el foco es la
+  página principal; el resto de pestañas espera a tener 3 apps. Hero escrito en
+  `CatalogPage` (EN/ES) a partir de una demo aprobada. Sin compilar todavía (Claude no
+  tiene el SDK de .NET en su entorno).
+
 ---
 
-## 11. Próximos pasos (propuesta — se elige el siguiente juntos)
+## 11. Próximos pasos
 
-Punto de partida: página *under construction*. Orden sugerido, de menor a mayor riesgo
-(no es un compromiso; se confirma paso a paso):
-
-1. **Limpiar el scaffold:** quitar `Counter.razor` y `Weather.razor`, y reescribir
-   `NavMenu` / `MainLayout` (sin enlaces de plantilla ni el "About" a Microsoft).
-2. **Primera versión del catálogo:** página de inicio Dashboard con hero + grid de
-   tarjetas Bootstrap, y un componente `ProjectCard` (CSS aislado). Modelo provisional
-   en memoria (datos hardcodeados) hasta que exista la DB.
-3. **Piezas del MVP (presentación pura):** footer con enlaces reales, página "Sobre
-   mí" + hueco para CV (PDF), página de contacto.
-4. **SEO básico:** `<title>` + meta description + Open Graph por página, `robots.txt`,
-   `sitemap.xml`.
-5. **Switch ES/EN** (interactividad + `.resx` + cookie + middleware) — más enredado;
-   se hace con calma.
-6. **DB del hub** (Postgres en compose + `PortfolioHub.Data` + EF Core `UseNpgsql` +
-   primera migración) — mayor riesgo; opcional, no bloquea nada.
+1. **Cerrar el Hero:** `dotnet run`, revisarlo en el navegador (oscuro, claro, móvil,
+   EN/ES), `git rm` de `Components/Pages/Home.razor` y `Home.razor.css`, commit y
+   desplegar.
+2. **Convenciones de Apollo → `CONVENTIONS.md`.** Leer el código de Apollo en local
+   (fuera de los repos; nunca en un repo público), escribir las reglas con ejemplos,
+   revisarlas juntos y decidir qué se queda. Que este archivo (y un `CLAUDE.md` para
+   Claude Code) apunten a él.
+3. **Tarjetas temporales** para los otros 2 prototipos (nombre + una línea).
+4. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
+   → En desarrollo → Live*); el subdominio a la vista cuando esté *Live*; una línea de
+   "lo interesante" técnico de cada app.
+5. **README público** del repo: es lo primero que ve un reclutador en GitHub.
+6. Con 3 apps: About, Contact, footer, SEO.
+7. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).
