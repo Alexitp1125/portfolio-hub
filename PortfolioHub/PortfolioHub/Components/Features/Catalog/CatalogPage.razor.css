@@ -1,3 +1,133 @@
+/* ============================================================
+   Hero: headline with the accent gradient + a faint retro grid.
+   ============================================================ */
+.ph-hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Soft blue/pink glow behind the text. */
+.ph-hero-glow {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(520px 260px at 82% 8%, rgba(244, 114, 182, 0.16), transparent 70%),
+        radial-gradient(520px 280px at 12% 20%, rgba(56, 189, 248, 0.13), transparent 70%);
+}
+
+/* Vaporwave floor grid in perspective, fading upwards. */
+.ph-hero-grid {
+    position: absolute;
+    z-index: -1;
+    left: -40%;
+    right: -40%;
+    bottom: -2px;
+    height: 62%;
+    background-image:
+        linear-gradient(rgba(129, 140, 248, 0.38) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(129, 140, 248, 0.38) 1px, transparent 1px);
+    background-size: 56px 56px;
+    transform: perspective(380px) rotateX(62deg);
+    transform-origin: bottom center;
+    -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 80%);
+    mask-image: linear-gradient(to top, #000 0%, transparent 80%);
+    opacity: 0.55;
+}
+
+.ph-hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 5.5rem;
+}
+
+.ph-hero-eyebrow {
+    margin: 0 0 1.1rem;
+    color: var(--ph-text-muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ph-hero-title {
+    margin: 0 0 1.2rem;
+    max-width: 16ch;
+    font-size: clamp(2.3rem, 5.2vw, 3.9rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+}
+
+/* Inline span so the gradient flows across both lines of the title. */
+.ph-gradient-text {
+    background: var(--ph-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.ph-hero-sub {
+    margin: 0 0 2rem;
+    max-width: 46ch;
+    color: var(--ph-text-muted);
+    font-size: 1.08rem;
+    line-height: 1.6;
+}
+
+.ph-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.ph-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.ph-btn:hover {
+    transform: translateY(-1px);
+}
+
+.ph-btn--primary {
+    background: var(--ph-accent);
+    color: #0f1021;
+}
+
+.ph-btn--ghost {
+    background: var(--ph-surface);
+    border: 1px solid var(--ph-border);
+    color: var(--ph-text);
+}
+
+.ph-btn--ghost:hover {
+    border-color: var(--ph-accent-2);
+}
+
+/* Lands below the sticky navbar when jumping to #projects. */
+.ph-catalog {
+    scroll-margin-top: 4.5rem;
+}
+
+@media (max-width: 719.98px) {
+    .ph-hero-inner {
+        padding: 4rem 1.5rem;
+    }
+
+    .ph-hero-sub {
+        font-size: 1rem;
+    }
+}
+
 .ph-catalog-title {
     margin: 0 0 1.75rem;
     font-size: 1.6rem;

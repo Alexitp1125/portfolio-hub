@@ -1,13 +1,34 @@
 @page "/"
 @inject IStringLocalizer<SharedResource> L
 
-@* Home page = app catalog. Project data is hardcoded in memory until the hub
-   database exists. One real entry for now; more get added as they ship. *@
+@* Home page: hero + app catalog. Project data is hardcoded in memory until the
+   hub database exists. One real entry for now; more get added as they ship. *@
 
 <PageTitle>@L["Catalog.Title"] · alexitp1125</PageTitle>
 
-<section class="ph-page">
-    <h1 class="ph-catalog-title">@L["Catalog.Title"]</h1>
+<section class="ph-hero">
+    <div class="ph-hero-glow" aria-hidden="true"></div>
+    <div class="ph-hero-grid" aria-hidden="true"></div>
+
+    <div class="ph-hero-inner">
+        <p class="ph-hero-eyebrow">@L["Hero.Eyebrow"]</p>
+        <h1 class="ph-hero-title"><span class="ph-gradient-text">@L["Hero.Title"]</span></h1>
+        <p class="ph-hero-sub">@L["Hero.Subtitle"]</p>
+
+        <div class="ph-hero-actions">
+            <a class="ph-btn ph-btn--primary" href="#projects">
+                @L["Hero.ViewProjects"] <i class="bi bi-arrow-down" aria-hidden="true"></i>
+            </a>
+            <a class="ph-btn ph-btn--ghost" href="https://github.com/Alexitp1125"
+               target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-github" aria-hidden="true"></i> GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="ph-page ph-catalog">
+    <h2 class="ph-catalog-title">@L["Catalog.Title"]</h2>
 
     <div class="ph-grid">
         <ProjectCard Project="_donut">

@@ -100,4 +100,16 @@
   <data name="Project.Donut.Tagline" xml:space="preserve">
     <value>Un generador interactivo de donut chart en 3D. Hoy es un prototipo en JavaScript — se reconstruye en C#/Blazor, con TypeScript donde C# no llega.</value>
   </data>
+  <data name="Hero.Eyebrow" xml:space="preserve">
+    <value>Alexi Torres · Desarrollador Full Stack .NET</value>
+  </data>
+  <data name="Hero.Title" xml:space="preserve">
+    <value>Ideas convertidas en apps reales.</value>
+  </data>
+  <data name="Hero.Subtitle" xml:space="preserve">
+    <value>Cada proyecto es su propia app: su repo, su contenedor y su subdominio. Este hub es donde viven.</value>
+  </data>
+  <data name="Hero.ViewProjects" xml:space="preserve">
+    <value>Ver proyectos</value>
+  </data>
 </root>
