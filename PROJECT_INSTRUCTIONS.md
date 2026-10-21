@@ -12,13 +12,11 @@
 
 ## 0. Resumen rápido (leer primero)
 
-- **Dónde estoy:** en producción está el Hero con el titular en degradado (2026-10-20). En
-  el repo, además, el hub sigue `dev-conventions` y tiene el **estilo v3**: la ciudad en el
-  Hero, la paleta v3 desde `brand/tokens.css`, Jost y Space Mono, y Rako.
-- **Lo último (2026-10-20):** estilo v3 llevado al código (detalle en la bitácora, §10).
-  **Pendiente de compilar, revisar y desplegar.**
-- **Lo siguiente:** compilar, revisar en el navegador y desplegar; después, decidir las
-  ideas de tarjeta (§11).
+- **Dónde estoy:** en producción está el **estilo v3** (commit `766c94e`): la ciudad en el
+  Hero, la paleta v3 desde `brand/tokens.css`, Jost y Space Mono, Rako, y las tarjetas
+  Music Player y 3D Charts. El hub sigue `dev-conventions`.
+- **Lo último (2026-10-20):** estilo v3 compilado, revisado y desplegado.
+- **Lo siguiente:** decidir las ideas de tarjeta (§11).
 
 ---
 
@@ -37,8 +35,8 @@ funciona cada una por dentro.
 
 ## 2. Estado REAL del repo (verificado 2026-10-20)
 
-**Producción:** `alexitp1125.com` sirve el Hero (commits `6386d8f` y `90ad51b`,
-desplegados el 2026-10-20). `www.alexitp1125.com` redirige al dominio principal desde el
+**Producción:** `alexitp1125.com` sirve el commit `766c94e` (estilo v3), desplegado el
+2026-10-20. `www.alexitp1125.com` redirige al dominio principal desde el
 2026-10-19 (configurado en `server-infra`).
 
 Qué hay:
@@ -313,20 +311,19 @@ Todo lo de infraestructura (desplegar, añadir una app nueva, cuidados) está en
   tarjetas con el estilo de la demo, tarjeta *Next app* y 404 con Rako, favicon de Rako y
   fuentes Jost y Space Mono. Las tarjetas ahora son **Music Player** (antes Lyrics: será un
   reproductor, por legalidad) y **3D Charts** (antes 3D Donut Chart: gráficas en general).
-  Nombres provisionales. Comprobado en un navegador con una maqueta estática (1024–2560 px
-  y móvil); falta compilar y probar en local.
+  Nombres provisionales. Comprobado con una maqueta estática (1024–2560 px y móvil),
+  compilado y revisado en local por Alexi, y desplegado (`26253b5` y `766c94e`). El
+  `favicon.png` de la plantilla se borra en el commit de cierre.
 
 ---
 
 ## 11. Próximos pasos
 
-1. **Cerrar el estilo v3:** `dotnet build` y `dotnet run`, revisar (claro, oscuro, móvil,
-   EN/ES, `/not-found`), `git rm` de `wwwroot/favicon.png`, commit y desplegar.
-2. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
+1. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
    → En desarrollo → Live*); el subdominio a la vista cuando esté *Live*; una línea de
    "lo interesante" técnico de cada app.
-3. **Nombres de las apps:** Music Player y 3D Charts son provisionales; se deciden en el
+2. **Nombres de las apps:** Music Player y 3D Charts son provisionales; se deciden en el
    chat de cada app y se cambian en los `.resx`.
-4. **README público** del repo: es lo primero que ve un reclutador en GitHub.
-5. Con 3 apps: About, Contact, footer, SEO.
-6. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).
+3. **README público** del repo: es lo primero que ve un reclutador en GitHub.
+4. Con 3 apps: About, Contact, footer, SEO.
+5. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).
