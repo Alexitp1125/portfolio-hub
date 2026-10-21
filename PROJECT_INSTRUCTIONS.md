@@ -12,14 +12,13 @@
 
 ## 0. Resumen rápido (leer primero)
 
-- **Dónde estoy:** el hub está en producción en `alexitp1125.com` con el **Hero**
-  (titular en degradado) y el catálogo: una tarjeta (3D Donut Chart, *Coming soon*),
-  EN/ES y tema claro/oscuro. Sigue `dev-conventions`.
-- **Lo último (2026-10-20):** Hero desplegado. El hub se alineó con `dev-conventions`
-  (`CLAUDE.md`, `camelCase` sin guion bajo, NUnit, namespaces en bloque). Sin cambios
-  visuales.
-- **Lo siguiente:** llevar al código el estilo de la demo v3 (ciudad, paleta, Jost y
-  Space Mono, Rako). Detalle en §11.
+- **Dónde estoy:** en producción está el Hero con el titular en degradado (2026-10-20). En
+  el repo, además, el hub sigue `dev-conventions` y tiene el **estilo v3**: la ciudad en el
+  Hero, la paleta v3 desde `brand/tokens.css`, Jost y Space Mono, y Rako.
+- **Lo último (2026-10-20):** estilo v3 llevado al código (detalle en la bitácora, §10).
+  **Pendiente de compilar, revisar y desplegar.**
+- **Lo siguiente:** compilar, revisar en el navegador y desplegar; después, decidir las
+  ideas de tarjeta (§11).
 
 ---
 
@@ -49,12 +48,18 @@ Qué hay:
 - **Layout:** `NavBar` (marca `alexitp1125`, enlaces Projects/About/Contact, GitHub,
   `LanguageSwitch` EN/ES, botón de tema, hamburguesa CSS en móvil), `MainLayout` de barra
   superior y `ReconnectModal`.
-- **Catálogo** (`Features/Catalog`): `CatalogPage` en `/`, `ProjectCard` (con modo solo
-  texto y fragmento `Media` para arte CSS) y el modelo `Project` + `ProjectStatus`
-  (`Live`/`Soon`). Datos en memoria. Una tarjeta: 3D Donut Chart (`Soon`, arte CSS).
-- **Hero** en `CatalogPage` (desplegado el 2026-10-20): línea
-  con nombre y rol, titular con el degradado, frase sobre la arquitectura, botones
-  *View projects* / *GitHub*, y fondo con brillo + cuadrícula vaporwave.
+- **Catálogo** (`Features/Catalog`): `CatalogPage` en `/`, `ProjectCard` (número de orden,
+  modo solo texto y fragmento `Media` para el dibujo SVG) y el modelo `Project` +
+  `ProjectStatus` (`Live`/`Soon`). Datos en memoria. Dos tarjetas *Coming soon*, con
+  nombre provisional: **Music Player** y **3D Charts** (gráficas en general, no solo
+  donut). Al final, la tarjeta **Next app** con Rako.
+- **Hero** en `CatalogPage`: nombre y rol, titular con el degradado, frase sobre la
+  arquitectura y botones *View projects* / *GitHub*, en un cuadro translúcido sobre la
+  ciudad (`HeroCity`).
+- **404** (`Pages/NotFound.razor`): Rako con los ojos `><`, texto EN/ES y botón para
+  volver.
+- **Marca:** colores y fuentes de `wwwroot/brand/tokens.css` (copia del de
+  `dev-conventions`); Rako en `wwwroot/brand/` y favicons en `wwwroot/`.
 - Localización EN/ES: `IStringLocalizer<SharedResource>` + `Resources/SharedResource*.resx`
   + cookie vía `/culture/set`. Inglés por defecto.
 - Tema claro/oscuro con toggle (`js/site.js`, default oscuro).
@@ -99,8 +104,8 @@ contexto histórico, no el estado actual.
   interactividad C# real (clicks, estado, eventos). Regla: presentación pura → proyecto
   servidor; interactivo → `.Client`. **No** borrar `_Imports.razor` del Client.
 - **UI:** Bootstrap + **CSS isolation por componente** (`Componente.razor.css`) + tema
-  oscuro. Preferir variables Bootstrap (`--bs-*`) sobre colores hardcodeados. Sin
-  frameworks UI de terceros (nada de MudBlazor, etc.).
+  claro y oscuro. Colores y fuentes desde `brand/tokens.css` (en `app.css` se exponen
+  como `--ph-*`). Sin frameworks UI de terceros (nada de MudBlazor, etc.).
 - **Datos:** PostgreSQL + EF Core, **una DB por servicio** (database-per-service). Las
   DB nunca se exponen a internet (sin subdominio, sin puerto público); acceso desde el
   PC solo por túnel SSH.
@@ -184,8 +189,9 @@ Componentes **persistentes** (en `Layout/`, en todas las páginas):
 **Página principal = hub** (`Features/Catalog/`), de arriba abajo:
 
 - `Hero` — **hecho 2026-10-20** (dentro de `CatalogPage`): titular con el degradado,
-  frase y botones *View projects* / *GitHub*.
-- `ProjectGrid` — **hecho** (dentro de `CatalogPage`): rejilla de `ProjectCard`.
+  frase y botones *View projects* / *GitHub*, sobre la ciudad (`HeroCity`).
+- `ProjectGrid` — **hecho** (dentro de `CatalogPage`): rejilla de `ProjectCard` + la
+  tarjeta *Next app*.
 - `AboutTeaser` — **pendiente**, cuando exista `AboutPage`.
 
 **Por app:** `ProjectDetailPage` en ruta `/apps/{slug}` — info larga, capturas, stack y
@@ -193,27 +199,23 @@ todos los recursos (demo, GitHub, NuGet, descarga). **Pendiente.**
 
 **Páginas sueltas:** `AboutPage`, `ContactPage` (hoy placeholders).
 
-### 7.2 Dirección visual (confirmada 2026-06-13)
+### 7.2 Dirección visual (estilo v3, decidido 2026-10-20)
 
-Minimalista sobre **tema oscuro**, con un **único acento: degradado azul→rosa
-(vaporwave, con medida)**. El acento aparece solo en pocos elementos (titular del Hero,
-botón principal, badge "live", enlaces activos); el resto queda plano y con aire, para
-que las capturas de las apps destaquen.
+City-pop / vaporwave **con medida**, en tema claro y oscuro (por defecto, oscuro). La
+referencia es la demo `claude/hub-style-demo-v5.html` (documentos del proyecto).
 
-**Tema claro y oscuro:** ambos soportados vía `data-bs-theme` en `<html>`, con un botón
-de toggle en el NavBar y persistencia en `localStorage` (script en `js/site.js`; init
-sin parpadeo en `App.razor`). **Default: oscuro.** El acento azul→rosa es el mismo en
-los dos temas; cambian solo el fondo/superficie/texto (paletas en `app.css` bajo
-`[data-bs-theme="dark"]` y `[data-bs-theme="light"]`).
-
-Paleta de partida (a afinar; se define como **variables CSS reutilizables**, no
-hardcodeada por componente — ver convención §5):
-
-- Fondo `#0f1021` · superficie `#181a2e` · borde `#272a45`
-- Texto `#eef0fb` · texto tenue `#9498b3`
-- Acento (degradado) `#38bdf8 → #818cf8 → #f472b6`
-
-Desde el 2026-10-20, el sitio principal del acento es el **titular del Hero**.
+- **Hero:** la ciudad (`HeroCity`) a lo ancho, con el cuadro del titular encima. Sol en el
+  tema claro, luna en el oscuro, en su propia capa colocada desde arriba del Hero para que
+  no se salgan en ninguna resolución. El Hero crece en pantallas muy anchas para que los
+  edificios no tapen el cielo. **La ciudad es provisional:** puede cambiar por otra
+  ilustración; solo se toca `HeroCity`.
+- **Fondo de página (variante B):** un toque del cielo arriba y rosa suave al final.
+- **Paleta:** la v3, en `brand/tokens.css` (`dev-conventions`). Los colores propios de la
+  ciudad y de los dibujos de las tarjetas están en sus componentes.
+- **Fuentes:** Jost (títulos y texto) y Space Mono (etiquetas), desde Google Fonts.
+- **Tarjetas:** borde de tinta, sombra desplazada, dibujo SVG arriba y badge en Space Mono.
+- **Rako** como máximo 2 o 3 veces por página: logo de la barra, tarjeta *Next app* y 404
+  (más el favicon).
 
 ---
 
@@ -304,21 +306,27 @@ Todo lo de infraestructura (desplegar, añadir una app nueva, cuidados) está en
   `WORKFLOW.md` y este archivo; §5 con `camelCase` sin guion bajo y NUnit; `_donut` →
   `Donut` (es una propiedad, así que va en `PascalCase`); namespaces en bloque en
   `Project.cs` y `SharedResource.cs`. Sin cambios visuales.
+- **2026-10-20 (3)** — Estilo v3 llevado al código, a partir de las demos A/B, v4 y v5.
+  Variante **B** (degradado suave en toda la página). La **paleta v3** pasa a ser la
+  oficial: `tokens.css` en `dev-conventions` (con su entrada en `DECISIONS.md`), copiado a
+  `wwwroot/brand/`. Nuevo `HeroCity` (la ciudad en SVG, con sol y luna en su propia capa),
+  tarjetas con el estilo de la demo, tarjeta *Next app* y 404 con Rako, favicon de Rako y
+  fuentes Jost y Space Mono. Las tarjetas ahora son **Music Player** (antes Lyrics: será un
+  reproductor, por legalidad) y **3D Charts** (antes 3D Donut Chart: gráficas en general).
+  Nombres provisionales. Comprobado en un navegador con una maqueta estática (1024–2560 px
+  y móvil); falta compilar y probar en local.
 
 ---
 
 ## 11. Próximos pasos
 
-1. **Estilo de la demo v3** (`claude/hub-style-demo-v3.html`, en los documentos del
-   proyecto): elegir la variante A (cielo solo en el Hero) o la B (además, un degradado
-   suave en toda la página); la ciudad con su paleta en tema claro y oscuro; fuentes Jost
-   y Space Mono; Rako en el logo, el favicon, el 404 y la tarjeta *Next app* (como
-   máximo 2 o 3 apariciones por página). Si se aprueba la paleta v3, actualizar
-   `brand/tokens.css` en `dev-conventions` y anotarlo en su `DECISIONS.md`.
+1. **Cerrar el estilo v3:** `dotnet build` y `dotnet run`, revisar (claro, oscuro, móvil,
+   EN/ES, `/not-found`), `git rm` de `wwwroot/favicon.png`, commit y desplegar.
 2. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
    → En desarrollo → Live*); el subdominio a la vista cuando esté *Live*; una línea de
    "lo interesante" técnico de cada app.
-3. **Tarjetas temporales** para los otros 2 prototipos (nombre + una línea).
+3. **Nombres de las apps:** Music Player y 3D Charts son provisionales; se deciden en el
+   chat de cada app y se cambian en los `.resx`.
 4. **README público** del repo: es lo primero que ve un reclutador en GitHub.
 5. Con 3 apps: About, Contact, footer, SEO.
 6. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).

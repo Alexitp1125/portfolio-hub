@@ -1,7 +1,7 @@
 @inject IStringLocalizer<SharedResource> L
 
 @* One catalog entry. The media area shows, in priority order: a Media render
-   fragment (e.g. CSS art), then Project.ImageUrl, then a compact text-only
+   fragment (e.g. SVG art), then Project.ImageUrl, then a compact text-only
    layout. Classes are prefixed "ph-" to avoid clashing with Bootstrap. *@
 
 <article class="ph-card">
@@ -29,6 +29,10 @@
             </div>
         }
 
+        @if (Number > 0)
+        {
+            <div class="ph-card-num">@Number.ToString("00")</div>
+        }
         <h3 class="ph-card-title">@Project.Title</h3>
         <p class="ph-card-tagline">@Project.Tagline</p>
 
@@ -72,9 +76,13 @@
     [Parameter, EditorRequired]
     public Project Project { get; set; } = default!;
 
-    /// <summary>Optional custom media (e.g. CSS art) rendered in the image area.</summary>
+    /// <summary>Optional custom media (e.g. SVG art) rendered in the image area.</summary>
     [Parameter]
     public RenderFragment? Media { get; set; }
+
+    /// <summary>Position in the catalog, shown as "01", "02"... 0 = hidden.</summary>
+    [Parameter]
+    public int Number { get; set; }
 
     private bool HasMedia => Media is not null || !string.IsNullOrEmpty(Project.ImageUrl);
 

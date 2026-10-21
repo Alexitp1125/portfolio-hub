@@ -94,22 +94,52 @@
   <data name="Status.Soon" xml:space="preserve">
     <value>Próximamente</value>
   </data>
-  <data name="Project.Donut.Title" xml:space="preserve">
-    <value>Donut Chart 3D</value>
-  </data>
-  <data name="Project.Donut.Tagline" xml:space="preserve">
-    <value>Un generador interactivo de donut chart en 3D. Hoy es un prototipo en JavaScript — se reconstruye en C#/Blazor, con TypeScript donde C# no llega.</value>
-  </data>
   <data name="Hero.Eyebrow" xml:space="preserve">
     <value>Alexi Torres · Desarrollador Full Stack .NET</value>
   </data>
-  <data name="Hero.Title" xml:space="preserve">
-    <value>Ideas convertidas en apps reales.</value>
+  <data name="Hero.TitleLead" xml:space="preserve">
+    <value>Ideas convertidas en</value>
+  </data>
+  <data name="Hero.TitleAccent" xml:space="preserve">
+    <value>apps reales.</value>
   </data>
   <data name="Hero.Subtitle" xml:space="preserve">
     <value>Cada proyecto es su propia app: su repo, su contenedor y su subdominio. Este hub es donde viven.</value>
   </data>
   <data name="Hero.ViewProjects" xml:space="preserve">
     <value>Ver proyectos</value>
+  </data>
+  <data name="Project.Player.Title" xml:space="preserve">
+    <value>Reproductor de música</value>
+  </data>
+  <data name="Project.Player.Tagline" xml:space="preserve">
+    <value>Un reproductor de música web. El audio va por el reproductor oficial de YouTube, así que cada reproducción respeta los derechos del artista.</value>
+  </data>
+  <data name="Project.Charts.Title" xml:space="preserve">
+    <value>Gráficas 3D</value>
+  </data>
+  <data name="Project.Charts.Tagline" xml:space="preserve">
+    <value>Gráficas 3D interactivas: donut, barras y más. Hoy es un prototipo en JavaScript; se reconstruye en C#/Blazor, con TypeScript donde C# no llega.</value>
+  </data>
+  <data name="Next.Title" xml:space="preserve">
+    <value>Próxima app</value>
+  </data>
+  <data name="Next.Body" xml:space="preserve">
+    <value>Vienen más</value>
+  </data>
+  <data name="NotFound.Title" xml:space="preserve">
+    <value>Página no encontrada</value>
+  </data>
+  <data name="NotFound.Lead" xml:space="preserve">
+    <value>Esta página</value>
+  </data>
+  <data name="NotFound.Accent" xml:space="preserve">
+    <value>se perdió.</value>
+  </data>
+  <data name="NotFound.Body" xml:space="preserve">
+    <value>La página que buscas no existe, o todavía no está construida.</value>
+  </data>
+  <data name="NotFound.Back" xml:space="preserve">
+    <value>Volver a proyectos</value>
   </data>
 </root>

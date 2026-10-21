@@ -94,22 +94,52 @@
   <data name="Status.Soon" xml:space="preserve">
     <value>Coming soon</value>
   </data>
-  <data name="Project.Donut.Title" xml:space="preserve">
-    <value>3D Donut Chart</value>
-  </data>
-  <data name="Project.Donut.Tagline" xml:space="preserve">
-    <value>An interactive 3D donut chart generator. Currently a JavaScript prototype — being rebuilt in C#/Blazor, with TypeScript where C# can't reach.</value>
-  </data>
   <data name="Hero.Eyebrow" xml:space="preserve">
     <value>Alexi Torres · Full Stack .NET Developer</value>
   </data>
-  <data name="Hero.Title" xml:space="preserve">
-    <value>Ideas, shipped as real apps.</value>
+  <data name="Hero.TitleLead" xml:space="preserve">
+    <value>Ideas, shipped as</value>
+  </data>
+  <data name="Hero.TitleAccent" xml:space="preserve">
+    <value>real apps.</value>
   </data>
   <data name="Hero.Subtitle" xml:space="preserve">
     <value>Each project is its own app — its own repo, container and subdomain. This hub is where they live.</value>
   </data>
   <data name="Hero.ViewProjects" xml:space="preserve">
     <value>View projects</value>
+  </data>
+  <data name="Project.Player.Title" xml:space="preserve">
+    <value>Music Player</value>
+  </data>
+  <data name="Project.Player.Tagline" xml:space="preserve">
+    <value>A web music player. Audio streams through YouTube's official player, so every play respects the artist's rights.</value>
+  </data>
+  <data name="Project.Charts.Title" xml:space="preserve">
+    <value>3D Charts</value>
+  </data>
+  <data name="Project.Charts.Tagline" xml:space="preserve">
+    <value>Interactive 3D charts — donut, bars and more. Currently a JavaScript prototype, being rebuilt in C#/Blazor with TypeScript where C# can't reach.</value>
+  </data>
+  <data name="Next.Title" xml:space="preserve">
+    <value>Next app</value>
+  </data>
+  <data name="Next.Body" xml:space="preserve">
+    <value>More on the way</value>
+  </data>
+  <data name="NotFound.Title" xml:space="preserve">
+    <value>Page not found</value>
+  </data>
+  <data name="NotFound.Lead" xml:space="preserve">
+    <value>This page</value>
+  </data>
+  <data name="NotFound.Accent" xml:space="preserve">
+    <value>wandered off.</value>
+  </data>
+  <data name="NotFound.Body" xml:space="preserve">
+    <value>The page you're looking for doesn't exist — or hasn't been built yet.</value>
+  </data>
+  <data name="NotFound.Back" xml:space="preserve">
+    <value>Back to projects</value>
   </data>
 </root>

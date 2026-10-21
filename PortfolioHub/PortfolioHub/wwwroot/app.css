@@ -1,62 +1,51 @@
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 /* =========================================================
-   Portfolio Hub — tema oscuro + acento vaporwave (azul→rosa)
-   Paleta como variables CSS reutilizables (no hardcodear por
-   componente). Ver PROJECT_INSTRUCTIONS.md §7.2.
+   Portfolio Hub. Colors and fonts come from brand/tokens.css
+   (dev-conventions). Theme: data-bs-theme on <html>.
    ========================================================= */
-/* Accent gradient — same in both themes */
-:root {
-    --ph-accent-1: #38bdf8; /* blue   */
-    --ph-accent-2: #818cf8; /* indigo */
-    --ph-accent-3: #f472b6; /* pink   */
-    --ph-accent: linear-gradient(90deg, var(--ph-accent-1), var(--ph-accent-2), var(--ph-accent-3));
+
+/* Hub names for the brand tokens */
+:root,
+[data-bs-theme] {
+    --ph-bg: var(--bg);
+    --ph-surface: var(--surface);
+    --ph-border: var(--border);
+    --ph-line: var(--line);
+    --ph-text: var(--text);
+    --ph-text-muted: var(--text-muted);
+    --ph-accent-1: var(--accent-1);
+    --ph-accent-2: var(--accent-2);
+    --ph-accent-3: var(--accent-3);
+    --ph-accent: var(--accent);
+    --ph-nav-bg: color-mix(in srgb, var(--bg) 82%, transparent);
+
+    --bs-body-bg: var(--bg);
+    --bs-body-color: var(--text);
+    --bs-body-font-family: var(--font-title);
+    --bs-border-color: var(--border);
+    --bs-emphasis-color: var(--text);
+    --bs-secondary-color: var(--text-muted);
 }
 
-/* Dark theme palette (default) */
-[data-bs-theme="dark"] {
-    --ph-bg: #0f1021;
-    --ph-surface: #181a2e;
-    --ph-border: #272a45;
-    --ph-text: #eef0fb;
-    --ph-text-muted: #9498b3;
-    --ph-nav-bg: rgba(15, 16, 33, 0.82);
-
-    --bs-body-bg: var(--ph-bg);
-    --bs-body-color: var(--ph-text);
-    --bs-border-color: var(--ph-border);
-    --bs-emphasis-color: var(--ph-text);
-    --bs-secondary-color: var(--ph-text-muted);
-}
-
-/* Light theme palette */
-[data-bs-theme="light"] {
-    --ph-bg: #f6f7fb;
-    --ph-surface: #ffffff;
-    --ph-border: #e3e6ef;
-    --ph-text: #1a1c2b;
-    --ph-text-muted: #5b6076;
-    --ph-nav-bg: rgba(246, 247, 251, 0.85);
-
-    --bs-body-bg: var(--ph-bg);
-    --bs-body-color: var(--ph-text);
-    --bs-border-color: var(--ph-border);
-    --bs-emphasis-color: var(--ph-text);
-    --bs-secondary-color: var(--ph-text-muted);
-}
-
-body {
+html {
     background-color: var(--ph-bg);
+}
+
+/* Page background: a hint of the sky at the top and pink at the bottom */
+body {
+    min-height: 100vh;
+    font-family: var(--font-title);
     color: var(--ph-text);
+    background: linear-gradient(180deg,
+        color-mix(in srgb, var(--sky-1) 22%, var(--bg)) 0%,
+        var(--bg) 45%,
+        color-mix(in srgb, var(--sky-3) 20%, var(--bg)) 100%);
 }
 
 a, .btn-link {
     color: var(--ph-accent-2);
 }
 
-/* Utilidades de página reutilizables */
+/* Shared page utilities */
 .ph-page {
     max-width: 1280px;
     margin: 0 auto;
@@ -66,6 +55,63 @@ a, .btn-link {
 .ph-muted {
     color: var(--ph-text-muted);
 }
+
+/* Small uppercase label in Space Mono */
+.ph-label {
+    font-family: var(--font-label);
+    font-size: 0.76rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ph-text-muted);
+}
+
+/* Text filled with the accent gradient */
+.ph-gradient-text {
+    background: var(--ph-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Buttons (hero, 404) */
+.ph-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.ph-btn:hover {
+    transform: translateY(-1px);
+}
+
+.ph-btn--primary {
+    background: var(--ph-accent);
+    color: var(--cream);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.ph-btn--primary:hover {
+    color: var(--cream);
+}
+
+.ph-btn--ghost {
+    background: var(--ph-surface);
+    border: 1px solid var(--ph-border);
+    color: var(--ph-text);
+}
+
+.ph-btn--ghost:hover {
+    color: var(--ph-text);
+    border-color: var(--ph-accent-2);
+}
+
+/* ---- From the Blazor template ---- */
 
 .btn-primary {
     color: #fff;

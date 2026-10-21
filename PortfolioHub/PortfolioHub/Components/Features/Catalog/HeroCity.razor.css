@@ -1,0 +1,134 @@
+/* City scene behind the home hero. The sky uses the brand tokens; the rest of the
+   colors belong to this illustration only. */
+
+.ph-city {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 55%, var(--sky-3) 90%);
+}
+
+/* Day */
+[data-bs-theme="light"] .ph-city {
+    --sun-op: 1;
+    --moon-op: 0;
+    --sun-1: #FFE45C;
+    --sun-2: #FF7CC8;
+    --moon: #FFF6C9;
+    --glow: #FFFFFF;
+    --star: #FFFFFF;
+    --star-op: 0;
+    --streak-op: 0.8;
+    --spark: #FFFFFF;
+    --cloud: #C9ECFF;
+    --cloud-line: #4A5BD8;
+    --cloud-op: 1;
+    --far: #E7B8F2;
+    --far-win: #FFFFFF;
+    --pole: #FF5FB8;
+    --wire: #3B3F9E;
+    --b1: #FFB3E2;
+    --b2: #C3A8FF;
+    --b3: #A4F2EA;
+    --b4: #FFD0EE;
+    --roof: #7F6DFF;
+    --outline: #2D3192;
+    --win-a: #FFE36E;
+    --win-b: #9FF3FF;
+    --win-off: #FFFFFF;
+    --sign: #FF4FAE;
+    --sign-bg: #FFF6FB;
+    --blossom-1: #FF8FD2;
+    --blossom-2: #FFC8EA;
+    --walk: #9FF5FF;
+    --road: #9B85FF;
+    --grid: #D9FBFF;
+}
+
+/* Night */
+[data-bs-theme="dark"] .ph-city {
+    --sun-op: 0;
+    --moon-op: 1;
+    --sun-1: #FFE45C;
+    --sun-2: #FF7CC8;
+    --moon: #FFE9A8;
+    --glow: #FF7AD9;
+    --star: #FFFFFF;
+    --star-op: 0.9;
+    --streak-op: 0.5;
+    --spark: #8FF6FF;
+    --cloud: #3A26B8;
+    --cloud-line: #7F6DFF;
+    --cloud-op: 0.55;
+    --far: #2A1A9A;
+    --far-win: #FF8FE0;
+    --pole: #1A0F60;
+    --wire: #4A3AD0;
+    --b1: #2E1C96;
+    --b2: #3B23B5;
+    --b3: #24157A;
+    --b4: #4228C4;
+    --roof: #5A3AE0;
+    --outline: #0D0840;
+    --win-a: #FF8FE0;
+    --win-b: #6FF6FF;
+    --win-off: #1C1268;
+    --sign: #4FE7FF;
+    --sign-bg: #120A4A;
+    --blossom-1: #FF6FD0;
+    --blossom-2: #C45BFF;
+    --walk: #3AD8FF;
+    --road: #160F5C;
+    --grid: #4FE7FF;
+}
+
+/* Sun / moon: centered 110px below the top of the hero, at 78% of its width */
+.ph-city-sky {
+    position: absolute;
+    top: -90px;
+    left: calc(78% - 200px);
+    width: 400px;
+    height: 400px;
+}
+
+/* City: anchored to the bottom, cropped at the top or the sides as needed */
+.ph-city-scene {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.ph-city-sign {
+    fill: var(--sign);
+    font: 700 20px var(--font-label);
+}
+
+.ph-city-petal {
+    fill: var(--blossom-1);
+    animation: ph-city-fall 14s linear infinite;
+}
+
+@keyframes ph-city-fall {
+    to {
+        transform: translate(-60px, 420px) rotate(220deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ph-city-petal {
+        animation: none;
+    }
+}
+
+/* Small screens: smaller sun / moon, top right, above the hero text */
+@media (max-width: 719.98px) {
+    .ph-city-sky {
+        top: -78px;
+        left: calc(82% - 130px);
+        width: 260px;
+        height: 260px;
+    }
+}

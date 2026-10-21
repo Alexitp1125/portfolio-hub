@@ -1,78 +1,52 @@
 /* ============================================================
-   Hero: headline with the accent gradient + a faint retro grid.
+   Hero: city scene (HeroCity) + headline card.
    ============================================================ */
+/* Grows on very wide screens so the city doesn't cover the sky. */
 .ph-hero {
     position: relative;
+    height: clamp(640px, 34vw, 900px);
     overflow: hidden;
     isolation: isolate;
-}
-
-/* Soft blue/pink glow behind the text. */
-.ph-hero-glow {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background:
-        radial-gradient(520px 260px at 82% 8%, rgba(244, 114, 182, 0.16), transparent 70%),
-        radial-gradient(520px 280px at 12% 20%, rgba(56, 189, 248, 0.13), transparent 70%);
-}
-
-/* Vaporwave floor grid in perspective, fading upwards. */
-.ph-hero-grid {
-    position: absolute;
-    z-index: -1;
-    left: -40%;
-    right: -40%;
-    bottom: -2px;
-    height: 62%;
-    background-image:
-        linear-gradient(rgba(129, 140, 248, 0.38) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(129, 140, 248, 0.38) 1px, transparent 1px);
-    background-size: 56px 56px;
-    transform: perspective(380px) rotateX(62deg);
-    transform-origin: bottom center;
-    -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 80%);
-    mask-image: linear-gradient(to top, #000 0%, transparent 80%);
-    opacity: 0.55;
+    border-bottom: 2px solid var(--ph-line);
 }
 
 .ph-hero-inner {
+    position: relative;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 6rem 1.5rem 5.5rem;
+    padding: 5.5rem 1.5rem 0;
+}
+
+.ph-hero-copy {
+    max-width: 520px;
+    padding: 1.6rem 1.8rem;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--ph-bg) 70%, transparent);
+    backdrop-filter: blur(6px);
+    border: 1px solid color-mix(in srgb, var(--ph-border) 70%, transparent);
 }
 
 .ph-hero-eyebrow {
-    margin: 0 0 1.1rem;
-    color: var(--ph-text-muted);
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    margin: 0 0 1rem;
 }
 
 .ph-hero-title {
-    margin: 0 0 1.2rem;
-    max-width: 16ch;
-    font-size: clamp(2.3rem, 5.2vw, 3.9rem);
-    line-height: 1.05;
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    text-wrap: balance;
+    margin: 0 0 1rem;
+    font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.04;
 }
 
-/* Inline span so the gradient flows across both lines of the title. */
-.ph-gradient-text {
-    background: var(--ph-accent);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+.ph-hero-title .ph-gradient-text {
+    font-weight: 600;
 }
 
 .ph-hero-sub {
-    margin: 0 0 2rem;
+    margin: 0 0 1.6rem;
     max-width: 46ch;
     color: var(--ph-text-muted);
-    font-size: 1.08rem;
+    font-size: 1.05rem;
+    font-weight: 300;
     line-height: 1.6;
 }
 
@@ -82,128 +56,155 @@
     gap: 0.75rem;
 }
 
-.ph-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.2rem;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.15s ease, border-color 0.15s ease;
-}
-
-.ph-btn:hover {
-    transform: translateY(-1px);
-}
-
-.ph-btn--primary {
-    background: var(--ph-accent);
-    color: #0f1021;
-}
-
-.ph-btn--ghost {
-    background: var(--ph-surface);
-    border: 1px solid var(--ph-border);
-    color: var(--ph-text);
-}
-
-.ph-btn--ghost:hover {
-    border-color: var(--ph-accent-2);
-}
+/* ============================================================
+   Catalog
+   ============================================================ */
 
 /* Lands below the sticky navbar when jumping to #projects. */
 .ph-catalog {
     scroll-margin-top: 4.5rem;
-}
-
-@media (max-width: 719.98px) {
-    .ph-hero-inner {
-        padding: 4rem 1.5rem;
-    }
-
-    .ph-hero-sub {
-        font-size: 1rem;
-    }
+    padding-bottom: 5rem;
 }
 
 .ph-catalog-title {
-    margin: 0 0 1.75rem;
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    margin: 0 0 1.6rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--ph-border);
     color: var(--ph-text);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
 }
 
-/* Responsive grid: cards keep a sensible width and fill the row left-to-right
-   as more projects are added (a single card stays its natural size, not stretched). */
+/* As many columns of at least 300px as fit (3 on desktop, 1 on phones). */
 .ph-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 340px));
-    justify-content: start;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: 1.4rem;
 }
 
-/* ============================================================
-   CSS art for the first project — a 3D donut chart, using the
-   site accent (blue -> indigo -> pink). No raster image.
-   ============================================================ */
-.donut-art {
+/* Card art (SVG inside ProjectCard's media area) */
+.ph-art {
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        radial-gradient(120% 90% at 50% 18%, #1b1e3d 0%, var(--ph-bg) 70%);
-    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
-.donut-stage {
-    position: relative;
-    width: 132px;
-    height: 132px;
-    perspective: 620px;
+[data-bs-theme="light"] .ph-art {
+    --art-1: #2A2DB8;
+    --art-2: #FF5FD1;
+    --art-disc: #140C52;
+    --art-grid: #D9FBFF;
+    --art-outline: #2D3192;
 }
 
-.donut-ring {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: conic-gradient(from 210deg,
-        var(--ph-accent-1),
-        var(--ph-accent-2),
-        var(--ph-accent-3),
-        var(--ph-accent-2),
-        var(--ph-accent-1));
-    -webkit-mask: radial-gradient(circle at 50% 50%, transparent 41%, #000 42%);
-    mask: radial-gradient(circle at 50% 50%, transparent 41%, #000 42%);
-    transform: rotateX(64deg) rotate(0deg);
-    box-shadow: 0 22px 34px rgba(0, 0, 0, 0.5);
-    animation: donut-spin 16s linear infinite;
+[data-bs-theme="dark"] .ph-art {
+    --art-1: #1219A8;
+    --art-2: #FF4FC8;
+    --art-disc: #140C52;
+    --art-grid: #4FE7FF;
+    --art-outline: #0D0840;
 }
 
-/* Faint inner highlight so the hole reads as a 3D core. */
-.donut-core {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) rotateX(64deg);
-    background: radial-gradient(circle, rgba(129, 140, 248, 0.22), transparent 70%);
+.ph-art-caption {
+    fill: var(--cream);
+    opacity: 0.8;
+    font: 400 9px var(--font-label);
+    letter-spacing: 2px;
 }
 
-@keyframes donut-spin {
-    to {
-        transform: rotateX(64deg) rotate(360deg);
+/* Equalizer bars of the music player art */
+.ph-eq {
+    transform-box: fill-box;
+    transform-origin: bottom;
+    animation: ph-eq 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes ph-eq {
+    from {
+        transform: scaleY(0.35);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .donut-ring {
+    .ph-eq {
         animation: none;
+    }
+}
+
+/* "Next app" card with Rako waiting */
+.ph-next {
+    display: grid;
+    place-items: center;
+    min-height: 330px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px dashed var(--ph-line);
+    border-radius: 14px;
+}
+
+.ph-next-rako {
+    display: block;
+    width: 104px;
+    height: 104px;
+    margin: 0 auto 0.6rem;
+}
+
+.ph-next-title {
+    margin: 0 0 0.3rem;
+    color: var(--ph-text);
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.ph-next-text {
+    margin: 0;
+    color: var(--ph-text-muted);
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   Small screens: taller hero so the city shows below the text
+   ============================================================ */
+@media (max-width: 719.98px) {
+    .ph-hero {
+        height: 720px;
+    }
+
+    .ph-hero-inner {
+        padding: 6.5rem 16px 0;
+    }
+
+    .ph-hero-copy {
+        padding: 1rem 1.1rem;
+        background: color-mix(in srgb, var(--ph-bg) 78%, transparent);
+    }
+
+    .ph-hero-eyebrow {
+        margin-bottom: 0.6rem;
+        font-size: 0.66rem;
+        letter-spacing: 0.18em;
+    }
+
+    .ph-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .ph-hero-sub {
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .ph-catalog {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }

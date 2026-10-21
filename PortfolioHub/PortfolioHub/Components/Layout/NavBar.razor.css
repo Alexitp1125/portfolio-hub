@@ -33,16 +33,17 @@
     gap: 0.6rem;
     text-decoration: none;
     color: var(--ph-text);
-    font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
 }
 
+/* Rako's head */
 .ph-brand-mark {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-    background: var(--ph-accent);
+    display: block;
+    width: 30px;
+    height: 30px;
 }
 
 /* Right-hand cluster: links + controls */

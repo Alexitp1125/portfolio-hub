@@ -1,0 +1,984 @@
+@* City scene behind the home hero. Colors come from the theme variables in
+   HeroCity.razor.css. The sun (light) and the moon (dark) sit in their own layer,
+   placed from the top of the hero, so they stay visible at any screen size. *@
+
+<div class="ph-city" aria-hidden="true">
+    <svg class="ph-city-sky" viewBox="0 0 400 400">
+        <defs>
+            <radialGradient id="ph-city-glow">
+                <stop offset="0" style="stop-color:var(--glow);stop-opacity:.55" />
+                <stop offset="1" style="stop-color:var(--glow);stop-opacity:0" />
+            </radialGradient>
+            <linearGradient id="ph-city-sun" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color:var(--sun-1)" />
+                <stop offset="1" style="stop-color:var(--sun-2)" />
+            </linearGradient>
+            <mask id="ph-city-crescent">
+                <rect width="400" height="400" fill="#fff" />
+                <circle cx="228" cy="178" r="58" fill="#000" />
+            </mask>
+            <mask id="ph-city-sun-bars">
+                <rect width="400" height="400" fill="#fff" />
+                <rect x="120" y="212" width="160" height="5" fill="#000" />
+                <rect x="120" y="228" width="160" height="6" fill="#000" />
+                <rect x="120" y="245" width="160" height="7" fill="#000" />
+            </mask>
+        </defs>
+        <circle cx="200" cy="200" r="190" fill="url(#ph-city-glow)" />
+        <circle cx="200" cy="200" r="66" mask="url(#ph-city-crescent)" style="fill:var(--moon);opacity:var(--moon-op)" />
+        <circle cx="200" cy="200" r="66" fill="url(#ph-city-sun)" mask="url(#ph-city-sun-bars)" style="opacity:var(--sun-op)" />
+    </svg>
+
+    <svg class="ph-city-scene" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMax slice">
+        <circle cx="309" cy="182" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1173" cy="55" r="1.4" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1346" cy="311" r="1.4" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1413" cy="69" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1042" cy="247" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="323" cy="234" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1356" cy="161" r="1.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="227" cy="315" r="1.4" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="9" cy="103" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="120" cy="312" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="673" cy="233" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1417" cy="235" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1127" cy="231" r="1.5" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="495" cy="279" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1252" cy="259" r="1.3" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="72" cy="12" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="510" cy="243" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="804" cy="290" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="629" cy="274" r="1.3" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="698" cy="145" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1003" cy="201" r="0.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="794" cy="173" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="818" cy="62" r="1.4" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="557" cy="301" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1219" cy="162" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1043" cy="106" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="728" cy="19" r="1.5" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1345" cy="271" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1142" cy="300" r="1.4" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="120" cy="291" r="1.4" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1180" cy="92" r="1.3" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="672" cy="218" r="1.4" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="513" cy="235" r="1.5" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="814" cy="230" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="815" cy="201" r="1.5" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="829" cy="88" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1065" cy="51" r="1.5" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1345" cy="256" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1049" cy="118" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1202" cy="101" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="847" cy="99" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1187" cy="168" r="1.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="383" cy="21" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1414" cy="213" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="348" cy="12" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1162" cy="82" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="276" cy="281" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="869" cy="164" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="830" cy="169" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="651" cy="301" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1162" cy="99" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1341" cy="23" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="417" cy="126" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="921" cy="42" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="163" cy="206" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1364" cy="80" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="366" cy="29" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="718" cy="156" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="579" cy="220" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1410" cy="171" r="1.3" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="175" cy="141" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="907" cy="243" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="866" cy="286" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="946" cy="98" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="596" cy="306" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="28" cy="27" r="0.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="707" cy="220" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="912" cy="35" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="27" cy="159" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="984" cy="260" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="826" cy="63" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="576" cy="210" r="1.5" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1403" cy="177" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1135" cy="234" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="204" cy="195" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="514" cy="80" r="1.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="624" cy="218" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1434" cy="288" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="389" cy="131" r="1.0" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1177" cy="212" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1181" cy="20" r="1.5" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="86" cy="155" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="145" cy="314" r="0.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="455" cy="76" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1108" cy="216" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="458" cy="137" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="194" cy="71" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="844" cy="132" r="1.3" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="1302" cy="114" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="175" cy="273" r="1.2" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="327" cy="204" r="0.8" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="693" cy="75" r="0.9" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="729" cy="304" r="1.7" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="258" cy="36" r="1.6" style="fill:var(--star);opacity:var(--star-op)" />
+        <circle cx="398" cy="123" r="1.1" style="fill:var(--star);opacity:var(--star-op)" />
+        <path d="M709,167 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M555,182 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M904,161 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M1099,130 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M1091,151 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M627,132 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M1343,83 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M729,88 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M1049,97 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M729,182 l1.5,4.5 l4.5,1.5 l-4.5,1.5 l-1.5,4.5 l-1.5,-4.5 l-4.5,-1.5 l4.5,-1.5Z" style="fill:var(--spark);opacity:var(--star-op)" />
+        <path d="M640,40 Q900,110 1300,60" style="stroke:var(--spark);fill:none;opacity:var(--streak-op)" stroke-width="1.5" />
+        <path transform="translate(760,120) scale(1.2)" d="M-90,20 Q-92,-4 -66,-6 Q-60,-34 -30,-30 Q-16,-54 14,-44 Q40,-58 56,-30 Q86,-32 90,-4 Q104,4 96,20 Z" style="fill:var(--cloud);stroke:var(--cloud-line);opacity:var(--cloud-op)" stroke-width="2" />
+        <path transform="translate(1320,260) scale(1.0)" d="M-90,20 Q-92,-4 -66,-6 Q-60,-34 -30,-30 Q-16,-54 14,-44 Q40,-58 56,-30 Q86,-32 90,-4 Q104,4 96,20 Z" style="fill:var(--cloud);stroke:var(--cloud-line);opacity:var(--cloud-op)" stroke-width="2" />
+        <path transform="translate(980,300) scale(0.8)" d="M-90,20 Q-92,-4 -66,-6 Q-60,-34 -30,-30 Q-16,-54 14,-44 Q40,-58 56,-30 Q86,-32 90,-4 Q104,4 96,20 Z" style="fill:var(--cloud);stroke:var(--cloud-line);opacity:var(--cloud-op)" stroke-width="2" />
+        <path transform="translate(560,250) scale(0.9)" d="M-90,20 Q-92,-4 -66,-6 Q-60,-34 -30,-30 Q-16,-54 14,-44 Q40,-58 56,-30 Q86,-32 90,-4 Q104,4 96,20 Z" style="fill:var(--cloud);stroke:var(--cloud-line);opacity:var(--cloud-op)" stroke-width="2" />
+        <rect x="380" y="313" width="68" height="217" style="fill:var(--far)" />
+        <rect x="419" y="337" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="430" y="337" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="365" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="397" y="365" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="419" y="365" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="379" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="408" y="379" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="419" y="379" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="430" y="379" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="397" y="393" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="419" y="393" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="407" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="408" y="407" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="421" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="397" y="421" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="419" y="421" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="419" y="435" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="430" y="435" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="449" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="408" y="449" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="430" y="463" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="477" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="430" y="477" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="491" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="505" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="408" y="505" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="386" y="519" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="397" y="519" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="430" y="519" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="451" y="336" width="76" height="194" style="fill:var(--far)" />
+        <rect x="457" y="346" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="501" y="346" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="512" y="346" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="457" y="360" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="468" y="360" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="490" y="360" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="501" y="360" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="468" y="374" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="479" y="374" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="457" y="388" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="512" y="388" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="468" y="402" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="490" y="402" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="501" y="402" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="512" y="402" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="457" y="416" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="501" y="416" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="512" y="416" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="468" y="430" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="490" y="430" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="501" y="430" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="457" y="444" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="479" y="444" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="490" y="444" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="512" y="444" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="457" y="458" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="512" y="458" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="457" y="472" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="501" y="472" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="479" y="486" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="490" y="486" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="501" y="486" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="512" y="486" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="468" y="500" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="479" y="500" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="457" y="514" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="468" y="514" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="479" y="514" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="531" y="306" width="66" height="224" style="fill:var(--far)" />
+        <rect x="537" y="316" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="316" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="537" y="330" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="330" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="344" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="537" y="358" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="358" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="581" y="358" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="372" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="372" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="386" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="386" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="570" y="386" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="537" y="400" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="400" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="570" y="400" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="537" y="414" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="414" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="414" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="570" y="442" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="581" y="442" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="456" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="570" y="456" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="470" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="570" y="470" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="581" y="470" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="537" y="484" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="484" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="548" y="498" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="498" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="570" y="498" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="559" y="512" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="570" y="512" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="599" y="349" width="77" height="181" style="fill:var(--far)" />
+        <rect x="605" y="359" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="627" y="359" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="373" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="616" y="373" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="649" y="373" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="387" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="627" y="387" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="649" y="387" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="401" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="638" y="401" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="415" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="660" y="415" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="638" y="429" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="649" y="429" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="660" y="429" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="638" y="443" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="649" y="443" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="457" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="616" y="457" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="649" y="457" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="471" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="627" y="471" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="649" y="471" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="485" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="638" y="485" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="649" y="499" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="660" y="499" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="605" y="513" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="638" y="513" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="660" y="513" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="677" y="287" width="66" height="243" style="fill:var(--far)" />
+        <rect x="716" y="297" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="683" y="311" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="694" y="311" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="705" y="325" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="716" y="325" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="325" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="694" y="353" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="683" y="367" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="716" y="367" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="367" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="683" y="395" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="395" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="683" y="423" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="694" y="423" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="705" y="423" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="716" y="423" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="423" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="683" y="437" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="694" y="437" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="716" y="437" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="716" y="451" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="451" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="705" y="465" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="716" y="465" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="465" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="683" y="479" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="694" y="479" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="479" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="683" y="493" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="727" y="493" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="694" y="507" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="716" y="507" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="746" y="323" width="62" height="207" style="fill:var(--far)" />
+        <rect x="752" y="347" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="774" y="347" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="785" y="347" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="796" y="347" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="361" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="763" y="361" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="785" y="361" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="763" y="375" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="796" y="375" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="389" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="774" y="389" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="403" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="417" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="763" y="417" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="774" y="417" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="785" y="417" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="431" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="774" y="431" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="785" y="431" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="445" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="459" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="763" y="459" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="785" y="473" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="796" y="473" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="487" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="752" y="501" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="763" y="501" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="796" y="501" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="796" y="515" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="808" y="290" width="50" height="240" style="fill:var(--far)" />
+        <rect x="836" y="328" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="847" y="328" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="814" y="342" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="342" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="814" y="356" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="356" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="836" y="356" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="370" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="836" y="370" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="814" y="384" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="384" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="847" y="384" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="836" y="398" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="847" y="398" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="814" y="412" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="847" y="412" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="426" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="836" y="426" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="454" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="847" y="454" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="814" y="468" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="468" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="836" y="468" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="496" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="847" y="496" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="825" y="510" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="861" y="300" width="73" height="230" style="fill:var(--far)" />
+        <rect x="878" y="310" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="889" y="310" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="900" y="310" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="324" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="900" y="324" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="911" y="324" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="324" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="878" y="338" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="352" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="911" y="352" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="366" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="878" y="366" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="889" y="366" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="911" y="366" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="366" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="380" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="900" y="380" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="911" y="380" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="380" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="394" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="878" y="394" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="889" y="394" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="900" y="394" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="911" y="394" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="408" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="878" y="408" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="900" y="408" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="878" y="422" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="889" y="422" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="911" y="422" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="422" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="900" y="450" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="450" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="464" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="900" y="464" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="464" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="478" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="911" y="478" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="478" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="867" y="492" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="922" y="506" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="936" y="350" width="49" height="180" style="fill:var(--far)" />
+        <rect x="953" y="360" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="964" y="360" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="942" y="388" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="953" y="388" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="942" y="402" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="953" y="402" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="964" y="402" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="942" y="416" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="964" y="416" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="942" y="430" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="953" y="444" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="964" y="444" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="953" y="458" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="953" y="472" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="964" y="472" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="953" y="486" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="942" y="500" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="953" y="500" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="985" y="282" width="62" height="248" style="fill:var(--far)" />
+        <rect x="1002" y="292" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1024" y="292" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1035" y="292" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1002" y="306" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1013" y="306" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1024" y="306" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1024" y="320" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="334" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1013" y="334" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1024" y="334" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1002" y="348" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="376" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1002" y="376" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1013" y="376" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1035" y="376" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="390" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1035" y="404" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1024" y="418" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="446" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="460" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1002" y="460" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1013" y="460" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1002" y="474" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1024" y="474" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="488" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="502" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1013" y="502" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1024" y="502" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1035" y="502" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="991" y="516" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1002" y="516" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1013" y="516" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1035" y="516" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1053" y="297" width="41" height="233" style="fill:var(--far)" />
+        <rect x="1070" y="321" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="335" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1081" y="335" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="349" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1070" y="349" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="363" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1070" y="363" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="377" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="391" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1081" y="391" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1081" y="433" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="461" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1081" y="461" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="475" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1070" y="489" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1059" y="503" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1081" y="517" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1100" y="307" width="51" height="223" style="fill:var(--far)" />
+        <rect x="1117" y="331" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="331" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1106" y="345" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="345" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1117" y="359" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="359" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="359" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1117" y="373" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="373" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="373" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1106" y="387" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="387" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="387" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1106" y="429" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1117" y="429" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="429" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1106" y="443" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1117" y="457" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="457" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="457" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1106" y="471" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="471" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1106" y="485" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1117" y="485" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="485" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="499" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="499" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1106" y="513" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1128" y="513" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1139" y="513" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1152" y="340" width="49" height="190" style="fill:var(--far)" />
+        <rect x="1158" y="350" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1169" y="364" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1180" y="364" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1158" y="378" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1169" y="378" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1180" y="378" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1158" y="392" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1180" y="406" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1169" y="434" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1169" y="462" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1158" y="476" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1169" y="518" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1205" y="356" width="58" height="174" style="fill:var(--far)" />
+        <rect x="1211" y="366" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1233" y="394" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1211" y="408" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1244" y="408" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1211" y="422" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1233" y="422" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1222" y="436" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1233" y="450" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1244" y="450" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1211" y="478" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1233" y="478" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1222" y="492" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1233" y="492" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1211" y="506" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1233" y="506" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1269" y="371" width="54" height="159" style="fill:var(--far)" />
+        <rect x="1297" y="381" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1286" y="395" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1297" y="395" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1308" y="395" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1275" y="423" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1286" y="423" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1286" y="437" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1308" y="437" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1275" y="451" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1297" y="465" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1275" y="479" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1297" y="493" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1275" y="507" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1286" y="507" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1308" y="507" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1324" y="383" width="72" height="147" style="fill:var(--far)" />
+        <rect x="1363" y="393" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1330" y="407" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1341" y="407" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1352" y="407" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1363" y="407" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1385" y="407" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1341" y="421" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1363" y="421" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1374" y="421" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1363" y="435" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1374" y="435" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1385" y="435" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1352" y="449" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1363" y="449" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1385" y="449" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1330" y="463" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1352" y="463" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1363" y="463" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1341" y="477" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1374" y="477" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1385" y="477" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1330" y="491" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1352" y="491" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1374" y="491" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1341" y="505" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1352" y="505" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1385" y="505" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1374" y="519" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1396" y="333" width="80" height="197" style="fill:var(--far)" />
+        <rect x="1402" y="343" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1424" y="357" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1435" y="357" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1413" y="371" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1424" y="371" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1457" y="371" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1457" y="385" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1402" y="399" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1413" y="399" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1402" y="413" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1413" y="413" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1402" y="427" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1413" y="427" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1457" y="427" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1413" y="441" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1435" y="441" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1457" y="441" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1446" y="455" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1435" y="469" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1413" y="483" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1424" y="483" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1413" y="497" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1424" y="497" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1435" y="497" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1446" y="497" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1424" y="511" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1446" y="511" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="1457" y="511" width="5" height="7" style="fill:var(--far-win)" />
+        <rect x="516" y="70" width="8" height="500" style="fill:var(--pole)" />
+        <rect x="486" y="110" width="68" height="5" style="fill:var(--pole)" />
+        <rect x="486" y="140" width="68" height="5" style="fill:var(--pole)" />
+        <rect x="896" y="70" width="8" height="500" style="fill:var(--pole)" />
+        <rect x="866" y="110" width="68" height="5" style="fill:var(--pole)" />
+        <rect x="866" y="140" width="68" height="5" style="fill:var(--pole)" />
+        <rect x="1286" y="70" width="8" height="500" style="fill:var(--pole)" />
+        <rect x="1256" y="110" width="68" height="5" style="fill:var(--pole)" />
+        <rect x="1256" y="140" width="68" height="5" style="fill:var(--pole)" />
+        <path d="M0,152 Q260,202 520,112 Q710,182 900,112 Q1095,182 1290,112 Q1365,182 1440,112" style="stroke:var(--wire);fill:none" stroke-width="1.6" />
+        <path d="M0,158 Q260,208 520,118 Q710,188 900,118 Q1095,188 1290,118 Q1365,188 1440,118" style="stroke:var(--wire);fill:none" stroke-width="1.6" />
+        <path d="M0,182 Q260,232 520,142 Q710,212 900,142 Q1095,212 1290,142 Q1365,212 1440,142" style="stroke:var(--wire);fill:none" stroke-width="1.6" />
+        <path d="M0,188 Q260,238 520,148 Q710,218 900,148 Q1095,218 1290,148 Q1365,218 1440,148" style="stroke:var(--wire);fill:none" stroke-width="1.6" />
+        <rect x="300" y="463" width="130" height="97" style="fill:var(--b2);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="294" y="455" width="142" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="314" y="481" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="340" y="481" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="366" y="481" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="392" y="481" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="314" y="509" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="340" y="509" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="366" y="509" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="392" y="509" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="314" y="537" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="340" y="537" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="366" y="537" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="392" y="537" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="445" y="425" width="117" height="135" style="fill:var(--b4);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="439" y="417" width="129" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="459" y="443" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="485" y="443" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="511" y="443" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="537" y="443" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="459" y="471" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="485" y="471" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="511" y="471" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="537" y="471" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="459" y="499" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="485" y="499" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="511" y="499" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="537" y="499" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="459" y="527" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="485" y="527" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="511" y="527" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="537" y="527" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="571" y="383" width="142" height="177" style="fill:var(--b1);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="565" y="375" width="154" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="585" y="401" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="611" y="401" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="637" y="401" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="663" y="401" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="689" y="401" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="585" y="429" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="611" y="429" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="637" y="429" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="663" y="429" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="689" y="429" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="585" y="457" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="611" y="457" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="637" y="457" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="663" y="457" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="689" y="457" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="585" y="485" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="611" y="485" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="637" y="485" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="663" y="485" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="689" y="485" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="585" y="513" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="611" y="513" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="637" y="513" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="663" y="513" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="689" y="513" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="723" y="368" width="130" height="192" style="fill:var(--b3);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="717" y="360" width="142" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="737" y="386" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="763" y="386" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="789" y="386" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="815" y="386" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="737" y="414" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="763" y="414" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="789" y="414" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="815" y="414" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="737" y="442" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="763" y="442" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="789" y="442" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="815" y="442" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="737" y="470" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="763" y="470" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="789" y="470" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="815" y="470" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="737" y="498" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="763" y="498" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="789" y="498" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="815" y="498" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="737" y="526" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="763" y="526" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="789" y="526" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="815" y="526" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="871" y="348" width="99" height="212" style="fill:var(--b2);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="865" y="340" width="111" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="885" y="366" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="911" y="366" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="937" y="366" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="885" y="394" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="911" y="394" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="937" y="394" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="885" y="422" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="911" y="422" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="937" y="422" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="885" y="450" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="911" y="450" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="937" y="450" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="885" y="478" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="911" y="478" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="937" y="478" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="885" y="506" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="911" y="506" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="937" y="506" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="885" y="534" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="911" y="534" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="937" y="534" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="976" y="394" width="137" height="166" style="fill:var(--b3);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="970" y="386" width="149" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="990" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1016" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1042" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1068" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="990" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1016" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1042" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1068" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="990" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1016" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1042" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1068" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="990" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1016" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1042" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1068" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="990" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1016" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1042" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1068" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1121" y="338" width="145" height="222" style="fill:var(--b3);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="1115" y="330" width="157" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="1135" y="356" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1161" y="356" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1187" y="356" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1213" y="356" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1239" y="356" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1135" y="384" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1161" y="384" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1187" y="384" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1213" y="384" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1239" y="384" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1135" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1161" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1187" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1213" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1239" y="412" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1135" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1161" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1187" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1213" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1239" y="440" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1135" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1161" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1187" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1213" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1239" y="468" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1135" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1161" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1187" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1213" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1239" y="496" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1135" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1161" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1187" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1213" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1239" y="524" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1282" y="301" width="130" height="259" style="fill:var(--b2);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="1276" y="293" width="142" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="1296" y="319" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="319" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="319" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="319" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1296" y="347" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="347" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="347" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="347" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1296" y="375" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="375" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="375" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="375" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1296" y="403" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="403" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="403" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="403" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1296" y="431" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="431" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="431" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="431" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1296" y="459" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="459" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="459" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="459" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1296" y="487" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="487" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="487" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="487" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1296" y="515" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1322" y="515" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1348" y="515" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1374" y="515" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1420" y="331" width="105" height="229" style="fill:var(--b2);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="1414" y="323" width="117" height="10" rx="2" style="fill:var(--roof);stroke:var(--outline)" stroke-width="2.5" />
+        <rect x="1434" y="349" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1460" y="349" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1486" y="349" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1434" y="377" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1460" y="377" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1486" y="377" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1434" y="405" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1460" y="405" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1486" y="405" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1434" y="433" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1460" y="433" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1486" y="433" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1434" y="461" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1460" y="461" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1486" y="461" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1434" y="489" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1460" y="489" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1486" y="489" width="14" height="16" rx="1.5" style="fill:var(--win-off);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1434" y="517" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1460" y="517" width="14" height="16" rx="1.5" style="fill:var(--win-a);stroke:var(--outline)" stroke-width="1.5" />
+        <rect x="1486" y="517" width="14" height="16" rx="1.5" style="fill:var(--win-b);stroke:var(--outline)" stroke-width="1.5" />
+        <g transform="translate(1210,330)">
+            <rect width="34" height="130" rx="6" style="fill:var(--sign-bg);stroke:var(--sign)" stroke-width="3" />
+            <text x="17" y="30" text-anchor="middle" class="ph-city-sign">A</text>
+            <text x="17" y="58" text-anchor="middle" class="ph-city-sign">P</text>
+            <text x="17" y="86" text-anchor="middle" class="ph-city-sign">P</text>
+            <text x="17" y="114" text-anchor="middle" class="ph-city-sign">S</text>
+        </g>
+        <circle cx="319" cy="534" r="12" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="309" cy="521" r="14" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="379" cy="542" r="14" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="284" cy="525" r="11" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="312" cy="560" r="15" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="364" cy="536" r="10" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="281" cy="540" r="17" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="359" cy="529" r="12" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="329" cy="555" r="13" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="285" cy="535" r="10" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="281" cy="537" r="10" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="271" cy="518" r="13" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="298" cy="543" r="14" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="383" cy="538" r="11" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="341" cy="559" r="15" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="371" cy="550" r="16" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="353" cy="544" r="12" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="339" cy="559" r="17" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="279" cy="534" r="16" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="295" cy="537" r="17" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="277" cy="532" r="11" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="332" cy="534" r="15" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="318" cy="519" r="10" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="319" cy="538" r="10" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="288" cy="553" r="17" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="374" cy="549" r="10" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1033" cy="549" r="17" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1074" cy="543" r="17" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1077" cy="549" r="12" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1092" cy="533" r="12" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1030" cy="520" r="11" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1089" cy="531" r="12" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1084" cy="545" r="10" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1038" cy="527" r="14" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1074" cy="548" r="10" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1035" cy="542" r="10" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1061" cy="523" r="16" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1105" cy="528" r="11" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1042" cy="554" r="14" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1078" cy="540" r="15" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1036" cy="532" r="17" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1008" cy="557" r="11" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1059" cy="530" r="14" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1098" cy="554" r="11" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1086" cy="533" r="17" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1042" cy="554" r="11" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1072" cy="549" r="15" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1032" cy="537" r="16" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1051" cy="544" r="13" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1101" cy="552" r="12" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1014" cy="529" r="15" style="fill:var(--blossom-1);stroke:var(--outline)" stroke-width="1.2" />
+        <circle cx="1009" cy="556" r="10" style="fill:var(--blossom-2);stroke:var(--outline)" stroke-width="1.2" />
+        <rect x="0" y="560" width="1440" height="16" style="fill:var(--walk);stroke:var(--outline)" stroke-width="2" />
+        <rect x="0" y="576" width="1440" height="64" style="fill:var(--road)" />
+        <g style="stroke:var(--grid)" stroke-width="1.2">
+            <line x1="384" y1="576" x2="-1440" y2="640" opacity=".7" />
+            <line x1="398" y1="576" x2="-1350" y2="640" opacity=".7" />
+            <line x1="412" y1="576" x2="-1260" y2="640" opacity=".7" />
+            <line x1="426" y1="576" x2="-1170" y2="640" opacity=".7" />
+            <line x1="440" y1="576" x2="-1080" y2="640" opacity=".7" />
+            <line x1="454" y1="576" x2="-990" y2="640" opacity=".7" />
+            <line x1="468" y1="576" x2="-900" y2="640" opacity=".7" />
+            <line x1="482" y1="576" x2="-810" y2="640" opacity=".7" />
+            <line x1="496" y1="576" x2="-720" y2="640" opacity=".7" />
+            <line x1="510" y1="576" x2="-630" y2="640" opacity=".7" />
+            <line x1="524" y1="576" x2="-540" y2="640" opacity=".7" />
+            <line x1="538" y1="576" x2="-450" y2="640" opacity=".7" />
+            <line x1="552" y1="576" x2="-360" y2="640" opacity=".7" />
+            <line x1="566" y1="576" x2="-270" y2="640" opacity=".7" />
+            <line x1="580" y1="576" x2="-180" y2="640" opacity=".7" />
+            <line x1="594" y1="576" x2="-90" y2="640" opacity=".7" />
+            <line x1="608" y1="576" x2="0" y2="640" opacity=".7" />
+            <line x1="622" y1="576" x2="90" y2="640" opacity=".7" />
+            <line x1="636" y1="576" x2="180" y2="640" opacity=".7" />
+            <line x1="650" y1="576" x2="270" y2="640" opacity=".7" />
+            <line x1="664" y1="576" x2="360" y2="640" opacity=".7" />
+            <line x1="678" y1="576" x2="450" y2="640" opacity=".7" />
+            <line x1="692" y1="576" x2="540" y2="640" opacity=".7" />
+            <line x1="706" y1="576" x2="630" y2="640" opacity=".7" />
+            <line x1="720" y1="576" x2="720" y2="640" opacity=".7" />
+            <line x1="734" y1="576" x2="810" y2="640" opacity=".7" />
+            <line x1="748" y1="576" x2="900" y2="640" opacity=".7" />
+            <line x1="762" y1="576" x2="990" y2="640" opacity=".7" />
+            <line x1="776" y1="576" x2="1080" y2="640" opacity=".7" />
+            <line x1="790" y1="576" x2="1170" y2="640" opacity=".7" />
+            <line x1="804" y1="576" x2="1260" y2="640" opacity=".7" />
+            <line x1="818" y1="576" x2="1350" y2="640" opacity=".7" />
+            <line x1="832" y1="576" x2="1440" y2="640" opacity=".7" />
+            <line x1="846" y1="576" x2="1530" y2="640" opacity=".7" />
+            <line x1="860" y1="576" x2="1620" y2="640" opacity=".7" />
+            <line x1="874" y1="576" x2="1710" y2="640" opacity=".7" />
+            <line x1="888" y1="576" x2="1800" y2="640" opacity=".7" />
+            <line x1="902" y1="576" x2="1890" y2="640" opacity=".7" />
+            <line x1="916" y1="576" x2="1980" y2="640" opacity=".7" />
+            <line x1="930" y1="576" x2="2070" y2="640" opacity=".7" />
+            <line x1="944" y1="576" x2="2160" y2="640" opacity=".7" />
+            <line x1="958" y1="576" x2="2250" y2="640" opacity=".7" />
+            <line x1="972" y1="576" x2="2340" y2="640" opacity=".7" />
+            <line x1="986" y1="576" x2="2430" y2="640" opacity=".7" />
+            <line x1="1000" y1="576" x2="2520" y2="640" opacity=".7" />
+            <line x1="1014" y1="576" x2="2610" y2="640" opacity=".7" />
+            <line x1="1028" y1="576" x2="2700" y2="640" opacity=".7" />
+            <line x1="1042" y1="576" x2="2790" y2="640" opacity=".7" />
+            <line x1="1056" y1="576" x2="2880" y2="640" opacity=".7" />
+            <line x1="0" y1="584" x2="1440" y2="584" opacity="0.35" />
+            <line x1="0" y1="596" x2="1440" y2="596" opacity="0.5" />
+            <line x1="0" y1="612" x2="1440" y2="612" opacity="0.65" />
+            <line x1="0" y1="634" x2="1440" y2="634" opacity="0.8" />
+        </g>
+        <ellipse class="ph-city-petal" style="animation-delay:-0.0s" cx="555" cy="381" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-1.1s" cx="851" cy="488" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-2.2s" cx="1040" cy="290" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-3.3s" cx="870" cy="520" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-4.4s" cx="919" cy="286" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-5.5s" cx="785" cy="506" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-6.6s" cx="1380" cy="518" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-7.7s" cx="659" cy="351" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-8.8s" cx="1300" cy="518" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-9.9s" cx="795" cy="399" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-11.0s" cx="500" cy="241" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-12.1s" cx="996" cy="274" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-13.2s" cx="1116" cy="398" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-14.3s" cx="842" cy="256" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-15.4s" cx="412" cy="279" rx="4" ry="2.2" />
+        <ellipse class="ph-city-petal" style="animation-delay:-16.5s" cx="547" cy="473" rx="4" ry="2.2" />
+    </svg>
+</div>
