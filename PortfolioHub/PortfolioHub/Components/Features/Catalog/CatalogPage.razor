@@ -31,7 +31,7 @@
     <h2 class="ph-catalog-title">@L["Catalog.Title"]</h2>
 
     <div class="ph-grid">
-        <ProjectCard Project="_donut">
+        <ProjectCard Project="Donut">
             <Media>
                 <div class="donut-art" aria-hidden="true">
                     <div class="donut-stage">
@@ -48,7 +48,7 @@
     // First project: a 3D donut chart generator (currently a JS prototype, to be
     // rebuilt in C#/Blazor with TypeScript interop where C# can't reach). Not
     // deployed yet -> Coming soon, no links.
-    private Project _donut => new()
+    private Project Donut => new()
     {
         Title = L["Project.Donut.Title"],
         Tagline = L["Project.Donut.Tagline"],

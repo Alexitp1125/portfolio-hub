@@ -4,18 +4,22 @@
 > cierre con lo que realmente se decidió/hizo. Construir primero, documentar después.
 >
 > Propietario: Alexi Torres · Dominio: alexitp1125.com · Última actualización: **2026-10-20**
+>
+> Sigue [`dev-conventions`](https://github.com/Alexitp1125/dev-conventions) (`CONVENTIONS.md` y
+> `WORKFLOW.md`). Aquí solo va lo propio del hub: su estado, sus decisiones y su bitácora.
 
 ---
 
 ## 0. Resumen rápido (leer primero)
 
-- **Dónde estoy:** el hub está en producción en `alexitp1125.com`: catálogo con una
-  tarjeta (3D Donut Chart, *Coming soon*), EN/ES y tema claro/oscuro. El servidor está
-  al día y `server-infra` tiene su propio README.
-- **Lo último (2026-10-20):** se escribió el **Hero** de la página principal.
-  **Sin commit y sin compilar todavía.**
-- **Lo siguiente:** (1) compilar, revisar y desplegar el Hero; (2) sacar las
-  convenciones de Apollo a un `CONVENTIONS.md`. Detalle en §11.
+- **Dónde estoy:** el hub está en producción en `alexitp1125.com` con el **Hero**
+  (titular en degradado) y el catálogo: una tarjeta (3D Donut Chart, *Coming soon*),
+  EN/ES y tema claro/oscuro. Sigue `dev-conventions`.
+- **Lo último (2026-10-20):** Hero desplegado. El hub se alineó con `dev-conventions`
+  (`CLAUDE.md`, `camelCase` sin guion bajo, NUnit, namespaces en bloque). Sin cambios
+  visuales.
+- **Lo siguiente:** llevar al código el estilo de la demo v3 (ciudad, paleta, Jost y
+  Space Mono, Rako). Detalle en §11.
 
 ---
 
@@ -34,8 +38,8 @@ funciona cada una por dentro.
 
 ## 2. Estado REAL del repo (verificado 2026-10-20)
 
-**Producción:** `alexitp1125.com` sirve el commit `6fce62d` (2026-06-14), verificado en
-el servidor el 2026-10-14. `www.alexitp1125.com` redirige al dominio principal desde el
+**Producción:** `alexitp1125.com` sirve el Hero (commits `6386d8f` y `90ad51b`,
+desplegados el 2026-10-20). `www.alexitp1125.com` redirige al dominio principal desde el
 2026-10-19 (configurado en `server-infra`).
 
 Qué hay:
@@ -48,15 +52,13 @@ Qué hay:
 - **Catálogo** (`Features/Catalog`): `CatalogPage` en `/`, `ProjectCard` (con modo solo
   texto y fragmento `Media` para arte CSS) y el modelo `Project` + `ProjectStatus`
   (`Live`/`Soon`). Datos en memoria. Una tarjeta: 3D Donut Chart (`Soon`, arte CSS).
-- **Hero** en `CatalogPage` (2026-10-20, **pendiente de compilar y desplegar**): línea
+- **Hero** en `CatalogPage` (desplegado el 2026-10-20): línea
   con nombre y rol, titular con el degradado, frase sobre la arquitectura, botones
   *View projects* / *GitHub*, y fondo con brillo + cuadrícula vaporwave.
 - Localización EN/ES: `IStringLocalizer<SharedResource>` + `Resources/SharedResource*.resx`
   + cookie vía `/culture/set`. Inglés por defecto.
 - Tema claro/oscuro con toggle (`js/site.js`, default oscuro).
 - **About y Contact son placeholders** ("Under construction").
-- `Components/Pages/Home.razor` (+ `.css`): la página vieja *under construction*, ahora en
-  `/under-construction`. Ya no se usa: **se borra** (§11).
 - `Dockerfile` multi-stage en la raíz.
 
 Qué **no** existe todavía: footer, base de datos, SEO, página de detalle por app,
@@ -119,18 +121,16 @@ contexto histórico, no el estado actual.
   (`SharedResource.resx` = inglés/fallback, `SharedResource.es.resx` = español);
   persistencia con cookie de cultura (1 año) vía el endpoint `/culture/set`;
   `UseRequestLocalization` con default `en` y culturas `en`/`es`.
-- **Naming .NET:** `PascalCase` clases/métodos, `camelCase` locales, `_camelCase`
-  campos privados.
+- **Naming .NET:** `PascalCase` en clases, métodos y propiedades; `camelCase` en
+  variables locales y campos privados (**sin guion bajo**).
 - **CSS:** isolation por componente; nada de CSS global suelto.
 - **Commits:** Conventional Commits — `feat:`, `fix:`, `docs:`, `chore:`.
 - **Ramas:** `main` = producción · `feature/*` = trabajo en curso (abrir PR aunque se
   trabaje solo).
-- **Tests (cuando exista lógica de dominio):** xUnit + FluentAssertions +
-  Moq/NSubstitute; objetivo ~60% en esa capa.
+- **Tests (cuando exista lógica de negocio):** NUnit.
 
-- **Referencia: Apollo.** Las convenciones de Apollo (nomenclatura, ViewModels,
-  proyectos separados por capa) se van a pasar a un `CONVENTIONS.md` (§11). Cuando
-  exista, esta sección se alinea con él.
+- **Reglas completas:** `dev-conventions/CONVENTIONS.md` (nombres, capas, ViewModels,
+  estilo de código). Si algo de esta sección choca con ese archivo, gana ese archivo.
 
 ---
 
@@ -299,22 +299,26 @@ Todo lo de infraestructura (desplegar, añadir una app nueva, cuidados) está en
   página principal; el resto de pestañas espera a tener 3 apps. Hero escrito en
   `CatalogPage` (EN/ES) a partir de una demo aprobada. Sin compilar todavía (Claude no
   tiene el SDK de .NET en su entorno).
+- **2026-10-20 (2)** — Hero compilado, commiteado (`6386d8f`, `90ad51b`) y desplegado.
+  El hub pasa a seguir `dev-conventions`: `CLAUDE.md` nuevo que importa `CONVENTIONS.md`,
+  `WORKFLOW.md` y este archivo; §5 con `camelCase` sin guion bajo y NUnit; `_donut` →
+  `Donut` (es una propiedad, así que va en `PascalCase`); namespaces en bloque en
+  `Project.cs` y `SharedResource.cs`. Sin cambios visuales.
 
 ---
 
 ## 11. Próximos pasos
 
-1. **Cerrar el Hero:** `dotnet run`, revisarlo en el navegador (oscuro, claro, móvil,
-   EN/ES), `git rm` de `Components/Pages/Home.razor` y `Home.razor.css`, commit y
-   desplegar.
-2. **Convenciones de Apollo → `CONVENTIONS.md`.** Leer el código de Apollo en local
-   (fuera de los repos; nunca en un repo público), escribir las reglas con ejemplos,
-   revisarlas juntos y decidir qué se queda. Que este archivo (y un `CLAUDE.md` para
-   Claude Code) apunten a él.
-3. **Tarjetas temporales** para los otros 2 prototipos (nombre + una línea).
-4. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
+1. **Estilo de la demo v3** (`claude/hub-style-demo-v3.html`, en los documentos del
+   proyecto): elegir la variante A (cielo solo en el Hero) o la B (además, un degradado
+   suave en toda la página); la ciudad con su paleta en tema claro y oscuro; fuentes Jost
+   y Space Mono; Rako en el logo, el favicon, el 404 y la tarjeta *Next app* (como
+   máximo 2 o 3 apariciones por página). Si se aprueba la paleta v3, actualizar
+   `brand/tokens.css` en `dev-conventions` y anotarlo en su `DECISIONS.md`.
+2. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
    → En desarrollo → Live*); el subdominio a la vista cuando esté *Live*; una línea de
    "lo interesante" técnico de cada app.
-5. **README público** del repo: es lo primero que ve un reclutador en GitHub.
-6. Con 3 apps: About, Contact, footer, SEO.
-7. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).
+3. **Tarjetas temporales** para los otros 2 prototipos (nombre + una línea).
+4. **README público** del repo: es lo primero que ve un reclutador en GitHub.
+5. Con 3 apps: About, Contact, footer, SEO.
+6. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).
