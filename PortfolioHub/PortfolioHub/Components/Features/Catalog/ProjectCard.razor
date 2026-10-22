@@ -49,10 +49,10 @@
         @if (HasLinks)
         {
             <div class="ph-card-links">
-                @if (!string.IsNullOrEmpty(Project.DemoUrl))
+                @if (!string.IsNullOrEmpty(Project.AppUrl))
                 {
-                    <a class="ph-card-link" href="@Project.DemoUrl" target="_blank" rel="noopener noreferrer">
-                        <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> @L["Card.Demo"]
+                    <a class="ph-card-open" href="@Project.AppUrl" target="_blank" rel="noopener">
+                        <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> @L["Card.Open"]
                     </a>
                 }
                 @if (!string.IsNullOrEmpty(Project.GitHubUrl))
@@ -66,6 +66,11 @@
                     <a class="ph-card-more" href="@Project.DetailUrl">
                         @L["Card.More"] <i class="bi bi-arrow-right" aria-hidden="true"></i>
                     </a>
+                }
+                @if (Project.Installable && !string.IsNullOrEmpty(Project.AppUrl))
+                {
+                    @* Install button drawn by the browser for that app (Chrome/Edge 158+ on PC). Elsewhere it shows nothing. *@
+                    <install installurl="@Project.AppUrl"></install>
                 }
             </div>
         }
@@ -87,7 +92,7 @@
     private bool HasMedia => Media is not null || !string.IsNullOrEmpty(Project.ImageUrl);
 
     private bool HasLinks =>
-        !string.IsNullOrEmpty(Project.DemoUrl)
+        !string.IsNullOrEmpty(Project.AppUrl)
         || !string.IsNullOrEmpty(Project.GitHubUrl)
         || !string.IsNullOrEmpty(Project.DetailUrl);
 

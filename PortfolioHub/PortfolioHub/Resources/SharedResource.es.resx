@@ -82,8 +82,8 @@
   <data name="Catalog.Title" xml:space="preserve">
     <value>Proyectos</value>
   </data>
-  <data name="Card.Demo" xml:space="preserve">
-    <value>Demo</value>
+  <data name="Card.Open" xml:space="preserve">
+    <value>Abrir app</value>
   </data>
   <data name="Card.More" xml:space="preserve">
     <value>Ver más</value>
@@ -110,16 +110,16 @@
     <value>Ver proyectos</value>
   </data>
   <data name="Project.Player.Title" xml:space="preserve">
-    <value>Reproductor de música</value>
+    <value>Mixtape</value>
   </data>
   <data name="Project.Player.Tagline" xml:space="preserve">
-    <value>Un reproductor de música web. El audio va por el reproductor oficial de YouTube, así que cada reproducción respeta los derechos del artista.</value>
+    <value>Mis canciones favoritas, cada una con su portada, por el reproductor oficial de YouTube.</value>
   </data>
   <data name="Project.Charts.Title" xml:space="preserve">
-    <value>Gráficas 3D</value>
+    <value>Chartwave</value>
   </data>
   <data name="Project.Charts.Tagline" xml:space="preserve">
-    <value>Gráficas 3D interactivas: donut, barras y más. Hoy es un prototipo en JavaScript; se reconstruye en C#/Blazor, con TypeScript donde C# no llega.</value>
+    <value>Un generador de gráficas 3D. La versión 1 hace gráficas de donut; vendrán más tipos.</value>
   </data>
   <data name="Next.Title" xml:space="preserve">
     <value>Próxima app</value>
@@ -141,5 +141,35 @@
   </data>
   <data name="NotFound.Back" xml:space="preserve">
     <value>Volver a proyectos</value>
+  </data>
+  <data name="App.Install" xml:space="preserve">
+    <value>Instalar</value>
+  </data>
+  <data name="App.Back" xml:space="preserve">
+    <value>Atrás</value>
+  </data>
+  <data name="App.Share" xml:space="preserve">
+    <value>Compartir</value>
+  </data>
+  <data name="App.Reload" xml:space="preserve">
+    <value>Recargar</value>
+  </data>
+  <data name="App.LinkCopied" xml:space="preserve">
+    <value>Enlace copiado</value>
+  </data>
+  <data name="App.IosTitle" xml:space="preserve">
+    <value>Instala esta app</value>
+  </data>
+  <data name="App.IosStep1" xml:space="preserve">
+    <value>Toca Compartir</value>
+  </data>
+  <data name="App.IosStep2" xml:space="preserve">
+    <value>Elige «Añadir a pantalla de inicio»</value>
+  </data>
+  <data name="App.IosStep3" xml:space="preserve">
+    <value>Toca «Añadir»</value>
+  </data>
+  <data name="App.IosClose" xml:space="preserve">
+    <value>Entendido</value>
   </data>
 </root>

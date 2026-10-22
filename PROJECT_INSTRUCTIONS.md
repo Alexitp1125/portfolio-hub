@@ -12,11 +12,13 @@
 
 ## 0. Resumen rápido (leer primero)
 
-- **Dónde estoy:** en producción está el **estilo v3** (commit `766c94e`): la ciudad en el
-  Hero, la paleta v3 desde `brand/tokens.css`, Jost y Space Mono, Rako, y las tarjetas
-  Music Player y 3D Charts. El hub sigue `dev-conventions`.
-- **Lo último (2026-10-20):** estilo v3 compilado, revisado y desplegado.
-- **Lo siguiente:** decidir las ideas de tarjeta (§11).
+- **Dónde estoy:** en producción está el **estilo v3** (commit `766c94e`). En el repo,
+  además, el hub es **instalable como app** (`dev-conventions` §11) y las tarjetas de
+  **Mixtape** y **Chartwave** están *Live*.
+- **Lo último (2026-10-21):** §11 aplicada al hub; Mixtape y Chartwave *Live*.
+  **Pendiente de compilar, revisar y desplegar.**
+- **Lo siguiente:** desplegar y probar la instalación (Android, iPhone y PC); después, las
+  ideas de tarjeta (§11).
 
 ---
 
@@ -48,9 +50,13 @@ Qué hay:
   superior y `ReconnectModal`.
 - **Catálogo** (`Features/Catalog`): `CatalogPage` en `/`, `ProjectCard` (número de orden,
   modo solo texto y fragmento `Media` para el dibujo SVG) y el modelo `Project` +
-  `ProjectStatus` (`Live`/`Soon`). Datos en memoria. Dos tarjetas *Coming soon*, con
-  nombre provisional: **Music Player** y **3D Charts** (gráficas en general, no solo
-  donut). Al final, la tarjeta **Next app** con Rako.
+  `ProjectStatus` (`Live`/`Soon`). Datos en memoria. Dos tarjetas *Live*: **Mixtape**
+  (`mixtape.alexitp1125.com`, reproductor de música) y **Chartwave**
+  (`chartwave.alexitp1125.com`, generador de gráficas 3D; la v1 es el donut). Mixtape ya es
+  instalable (§11, su commit `f6302b0`); Chartwave lo será en su v1.1. Una tarjeta *Live* lleva
+  el botón **«Open app»** y,
+  si la app es instalable (`Installable`), el botón `<install>` del navegador. Al final,
+  la tarjeta **Next app** con Rako.
 - **Hero** en `CatalogPage`: nombre y rol, titular con el degradado, frase sobre la
   arquitectura y botones *View projects* / *GitHub*, en un cuadro translúcido sobre la
   ciudad (`HeroCity`).
@@ -58,6 +64,10 @@ Qué hay:
   volver.
 - **Marca:** colores y fuentes de `wwwroot/brand/tokens.css` (copia del de
   `dev-conventions`); Rako en `wwwroot/brand/` y favicons en `wwwroot/`.
+- **Instalable** (`dev-conventions` §11): `manifest.webmanifest`, iconos (`favicon-192/512`,
+  `icon-maskable-512.png`, `apple-touch-icon.png`), `sw.js` + `offline.html` y
+  `js/app-shell.js`, copiados de `dev-conventions/pwa/`. En modo instalada, la barra muestra
+  Atrás, Compartir y Recargar; el botón Instalar sale cuando el navegador puede instalar.
 - Localización EN/ES: `IStringLocalizer<SharedResource>` + `Resources/SharedResource*.resx`
   + cookie vía `/culture/set`. Inglés por defecto.
 - Tema claro/oscuro con toggle (`js/site.js`, default oscuro).
@@ -214,6 +224,8 @@ referencia es la demo `claude/hub-style-demo-v5.html` (documentos del proyecto).
 - **Tarjetas:** borde de tinta, sombra desplazada, dibujo SVG arriba y badge en Space Mono.
 - **Rako** como máximo 2 o 3 veces por página: logo de la barra, tarjeta *Next app* y 404
   (más el favicon).
+- **Instalada como app** (§11 de `dev-conventions`, demo `claude/hub-pwa-demo.html`): icono
+  de Rako sobre «cielo de noche»; Atrás junto al logo, Compartir y Recargar en los controles.
 
 ---
 
@@ -314,16 +326,32 @@ Todo lo de infraestructura (desplegar, añadir una app nueva, cuidados) está en
   Nombres provisionales. Comprobado con una maqueta estática (1024–2560 px y móvil),
   compilado y revisado en local por Alexi, y desplegado (`26253b5` y `766c94e`). El
   `favicon.png` de la plantilla se borra en el commit de cierre.
+- **2026-10-21** — Nueva regla de plataforma: toda app se puede instalar en el teléfono y
+  en el PC (`dev-conventions` §11, escrita por el chat de configuración a partir de
+  `claude/pwa-brief.md` y la demo `claude/hub-pwa-demo.html`). Aplicada al hub: manifiesto,
+  iconos opacos (el `favicon-180.png` transparente salía negro en iPhone y se borra),
+  service worker con página sin conexión, `app-shell.js`, barra con Atrás, Compartir,
+  Recargar e Instalar (+ pasos de iPhone) y zonas seguras. Las tarjetas pasan a *Live*:
+  Music Player es ahora **Mixtape** (instalable, `Installable = true`; su frase sale de su
+  manifiesto) y 3D Charts es **Chartwave** (repo `chartwave`, antes `graphic-generator`; será
+  instalable en su v1.1). «Open app» pasa a ser un botón. `Project.DemoUrl` pasa a `AppUrl` y
+  aparece `Installable`. Alexi instaló el hub con el botón Instalar en Edge (PC).
 
 ---
 
 ## 11. Próximos pasos
 
-1. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
+1. **Cerrar §11:** `dotnet build`/`run`, revisar, `git rm wwwroot/favicon-180.png`, commit y
+   desplegar. Probar la instalación en Chrome y Brave (Android), Safari (iPhone) y Chrome o
+   Edge (PC): Atrás, Compartir, Recargar, sin conexión y zonas seguras.
+2. **Tarjetas:**
+   - **Chartwave:** `Installable = true` cuando salga su v1.1 (§11). Si el repo es público,
+     añadir `GitHubUrl`.
+   - Con **Chrome/Edge 158** (17-nov-2026): probar el botón de instalar de la tarjeta de
+     Mixtape en el PC y ver si la app tiene que autorizar al hub (`install_sources`).
+3. **Ideas para la tarjeta, por decidir:** etapas en vez de Live/Soon (*Idea → Prototipo
    → En desarrollo → Live*); el subdominio a la vista cuando esté *Live*; una línea de
    "lo interesante" técnico de cada app.
-2. **Nombres de las apps:** Music Player y 3D Charts son provisionales; se deciden en el
-   chat de cada app y se cambian en los `.resx`.
-3. **README público** del repo: es lo primero que ve un reclutador en GitHub.
-4. Con 3 apps: About, Contact, footer, SEO.
-5. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).
+4. **README público** del repo: es lo primero que ve un reclutador en GitHub.
+5. Con 3 apps: About, Contact, footer, SEO.
+6. Más adelante: DB del hub; CI/CD con GitHub Actions (el CV ya lo menciona).

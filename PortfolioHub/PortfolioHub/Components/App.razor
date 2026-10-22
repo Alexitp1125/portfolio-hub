@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#110B4A" />
     <base href="/" />
     <script>
         // Apply the saved color theme before first paint to avoid a flash.
@@ -27,9 +28,11 @@
     <link rel="stylesheet" href="@Assets["app.css"]" />
     <link rel="stylesheet" href="@Assets["PortfolioHub.styles.css"]" />
     <ImportMap />
+    <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
-    <link rel="apple-touch-icon" href="favicon-180.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="alexitp1125" />
     <HeadOutlet />
 </head>
 
@@ -38,6 +41,7 @@
     <ReconnectModal />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
     <script src="js/site.js"></script>
+    <script src="js/app-shell.js"></script>
 </body>
 
 </html>

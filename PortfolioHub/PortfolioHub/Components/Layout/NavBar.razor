@@ -1,41 +1,80 @@
 @inject IStringLocalizer<SharedResource> L
+@inject NavigationManager Nav
 
 @* Persistent top navigation. Lives on every page via MainLayout.
    Classes are prefixed "ph-" to avoid clashing with Bootstrap (e.g. .nav).
    The checkbox + label is a CSS-only hamburger for small screens.
-   The right cluster is: links | GitHub · language pill · theme toggle. *@
+   Back, Share and Reload only show when the hub runs as an installed app ("ph-app-only").
+   The Install button only shows when the browser can install the hub.
+   What these buttons do lives in js/app-shell.js (data-app-* attributes). *@
 
 <header class="ph-nav">
     <div class="ph-nav-inner">
+        @if (!IsHome)
+        {
+            <button type="button" class="ph-icon-btn ph-app-only" data-app-back aria-label="@L["App.Back"]">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            </button>
+        }
+
         <a class="ph-brand" href="/">
             <img class="ph-brand-mark" src="brand/rako-mark.svg" alt="" width="30" height="30" />
             <span class="ph-brand-name">alexitp1125</span>
         </a>
 
-        <input type="checkbox" id="ph-nav-toggle" class="ph-nav-cb" autocomplete="off" aria-label="Menu" />
-        <label for="ph-nav-toggle" class="ph-hamburger">
-            <i class="bi bi-list" aria-hidden="true"></i>
-        </label>
+        <div class="ph-nav-end">
+            <button type="button" class="ph-install" data-app-install hidden>
+                <i class="bi bi-download" aria-hidden="true"></i> @L["App.Install"]
+            </button>
 
-        <div class="ph-cluster">
-            <nav class="ph-nav-links">
-                <NavLink class="ph-link" href="" Match="NavLinkMatch.All">@L["Nav.Projects"]</NavLink>
-                <NavLink class="ph-link" href="about">@L["Nav.About"]</NavLink>
-                <NavLink class="ph-link" href="contact">@L["Nav.Contact"]</NavLink>
-            </nav>
+            <input type="checkbox" id="ph-nav-toggle" class="ph-nav-cb" autocomplete="off" aria-label="Menu" />
+            <label for="ph-nav-toggle" class="ph-hamburger">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </label>
 
-            <span class="ph-divider" aria-hidden="true"></span>
+            <div class="ph-cluster">
+                <nav class="ph-nav-links">
+                    <NavLink class="ph-link" href="" Match="NavLinkMatch.All">@L["Nav.Projects"]</NavLink>
+                    <NavLink class="ph-link" href="about">@L["Nav.About"]</NavLink>
+                    <NavLink class="ph-link" href="contact">@L["Nav.Contact"]</NavLink>
+                </nav>
 
-            <div class="ph-controls">
-                <a class="ph-icon-btn" href="https://github.com/Alexitp1125"
-                   target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <i class="bi bi-github" aria-hidden="true"></i>
-                </a>
-                <LanguageSwitch />
-                <button type="button" class="ph-icon-btn" data-theme-toggle aria-label="Toggle theme">
-                    <i class="bi bi-circle-half" aria-hidden="true"></i>
-                </button>
+                <span class="ph-divider" aria-hidden="true"></span>
+
+                <div class="ph-controls">
+                    <button type="button" class="ph-icon-btn ph-app-only" data-app-share
+                            data-copied="@L["App.LinkCopied"]" aria-label="@L["App.Share"]">
+                        <i class="bi bi-share" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="ph-icon-btn ph-app-only" data-app-reload aria-label="@L["App.Reload"]">
+                        <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                    </button>
+                    <a class="ph-icon-btn" href="https://github.com/Alexitp1125"
+                       target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="bi bi-github" aria-hidden="true"></i>
+                    </a>
+                    <LanguageSwitch />
+                    <button type="button" class="ph-icon-btn" data-theme-toggle aria-label="Toggle theme">
+                        <i class="bi bi-circle-half" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </header>
+
+@* iPhone and iPad have no install prompt: the Install button opens these steps. *@
+<dialog class="ph-ios-install" data-app-ios-install aria-labelledby="ph-ios-install-title">
+    <h2 id="ph-ios-install-title">@L["App.IosTitle"]</h2>
+    <ol>
+        <li>@L["App.IosStep1"] <i class="bi bi-box-arrow-up" aria-hidden="true"></i></li>
+        <li>@L["App.IosStep2"]</li>
+        <li>@L["App.IosStep3"]</li>
+    </ol>
+    <button type="button" class="ph-btn ph-btn--primary" data-app-ios-close>@L["App.IosClose"]</button>
+</dialog>
+
+@code {
+    // True on "/" (ignoring query and fragment): there is nothing to go back to.
+    private bool IsHome => Nav.ToBaseRelativePath(Nav.Uri).Split('?', '#')[0].Length == 0;
+}

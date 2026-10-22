@@ -134,6 +134,32 @@
     border-top: 1px solid var(--ph-border);
 }
 
+/* "Open app": the main button of a live card */
+.ph-card-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 10px;
+    background: var(--ph-accent);
+    color: var(--cream);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+}
+
+.ph-card-open:hover {
+    color: var(--cream);
+    transform: translateY(-1px);
+}
+
+/* Browser-drawn install button for the app (<install>), at the right */
+.ph-card-links install {
+    margin-left: auto;
+}
+
 .ph-card-link {
     color: var(--ph-text-muted);
     text-decoration: none;

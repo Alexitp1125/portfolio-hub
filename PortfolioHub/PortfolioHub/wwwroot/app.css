@@ -49,7 +49,7 @@ a, .btn-link {
 .ph-page {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 3rem max(1.5rem, env(safe-area-inset-right)) 3rem max(1.5rem, env(safe-area-inset-left));
 }
 
 .ph-muted {

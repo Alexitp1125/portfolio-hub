@@ -4,6 +4,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    padding-top: env(safe-area-inset-top);
     background: var(--ph-nav-bg);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid transparent;
@@ -20,10 +21,18 @@
     position: relative;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0.85rem 1.5rem;
+    padding: 0.85rem max(1.5rem, env(safe-area-inset-right)) 0.85rem max(1.5rem, env(safe-area-inset-left));
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.6rem;
+}
+
+/* Right side: Install button + links and controls (or the hamburger on phones) */
+.ph-nav-end {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
 }
 
 /* Brand */
@@ -46,7 +55,7 @@
     height: 30px;
 }
 
-/* Right-hand cluster: links + controls */
+/* Links + controls */
 .ph-cluster {
     display: flex;
     align-items: center;
@@ -120,6 +129,64 @@
     color: var(--ph-text);
 }
 
+/* Back, Share and Reload: only when running as an installed app (no browser bar) */
+.ph-app-only {
+    display: none;
+}
+
+@media (display-mode: standalone) {
+    .ph-app-only {
+        display: inline-flex;
+    }
+}
+
+/* Install button: hidden until the browser can install the hub */
+.ph-install {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.85rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ph-accent);
+    color: var(--cream);
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.ph-install[hidden] {
+    display: none;
+}
+
+/* Steps to install on iPhone / iPad */
+.ph-ios-install {
+    max-width: min(340px, calc(100vw - 32px));
+    padding: 1.4rem 1.5rem;
+    border: 2px solid var(--ph-line);
+    border-radius: 16px;
+    background: var(--ph-surface);
+    color: var(--ph-text);
+    box-shadow: 5px 5px 0 var(--ph-accent-2);
+}
+
+.ph-ios-install::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.ph-ios-install h2 {
+    margin: 0 0 0.8rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.ph-ios-install ol {
+    margin: 0 0 1.2rem;
+    padding-left: 1.2rem;
+    line-height: 1.8;
+}
+
 /* CSS-only hamburger (hidden on desktop) */
 .ph-nav-cb {
     display: none;
@@ -149,7 +216,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 1.1rem;
-        padding: 1.1rem 1.25rem 1.35rem;
+        padding: 1.1rem max(1.25rem, env(safe-area-inset-right)) 1.35rem max(1.25rem, env(safe-area-inset-left));
         background: var(--ph-surface);
         border-bottom: 1px solid var(--ph-border);
     }

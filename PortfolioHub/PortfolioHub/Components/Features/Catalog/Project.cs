@@ -31,7 +31,11 @@ namespace PortfolioHub.Components.Features.Catalog
         /// <summary>Optional screenshot/thumbnail. Null = text-only card.</summary>
         public string? ImageUrl { get; init; }
 
-        public string? DemoUrl { get; init; }
+        /// <summary>The deployed app (its subdomain).</summary>
+        public string? AppUrl { get; init; }
+
+        /// <summary>The app meets CONVENTIONS §11: the card shows the browser's install button.</summary>
+        public bool Installable { get; init; }
 
         public string? GitHubUrl { get; init; }
 

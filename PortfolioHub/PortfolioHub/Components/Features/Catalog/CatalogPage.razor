@@ -127,21 +127,24 @@
 </section>
 
 @code {
-    // Music player. Audio plays through YouTube's official player. Not deployed yet.
+    // Mixtape: music player; audio plays through YouTube's official player. Installable (CONVENTIONS §11).
     private Project Player => new()
     {
         Title = L["Project.Player.Title"],
         Tagline = L["Project.Player.Tagline"],
         Tags = ["Blazor", "C#", "YouTube API"],
-        Status = ProjectStatus.Soon
+        Status = ProjectStatus.Live,
+        AppUrl = "https://mixtape.alexitp1125.com",
+        Installable = true
     };
 
-    // 3D charts generator (donut, bars and more). JS prototype being rebuilt in Blazor. Not deployed yet.
+    // Chartwave: 3D chart generator (v1: donut). Not installable yet (CONVENTIONS §11 comes in v1.1).
     private Project Charts => new()
     {
         Title = L["Project.Charts.Title"],
         Tagline = L["Project.Charts.Tagline"],
         Tags = ["Blazor", "C#", "TypeScript"],
-        Status = ProjectStatus.Soon
+        Status = ProjectStatus.Live,
+        AppUrl = "https://chartwave.alexitp1125.com"
     };
 }
